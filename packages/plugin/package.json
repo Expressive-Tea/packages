@@ -1,0 +1,20 @@
+{
+  "name": "@expressive-tea/plugin",
+  "version": "0.0.1",
+  "description": "A Plugin Engine for Expressive Tea Framework.",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/zero-oneit/open-source/expressive-tea.git"
+  },
+  "keywords": [
+    "Expressive-Tea",
+    "plugin",
+    "typescript",
+    "decorators"
+  ],
+  "author": "Zero One IT <projects@zero-oneit.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  }
+}
