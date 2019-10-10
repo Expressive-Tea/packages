@@ -1,13 +1,18 @@
 import {getStages} from "../helpers";
+import {BOOT_STAGES} from "../constants";
 
 export abstract class Plugin {
   readonly settings = {};
   constructor(settings = {}) {
     this.settings = Object.assign({}, settings);
   }
-  register() {
+
+  getRegisteredStage(stage: BOOT_STAGES) {
     const stages = getStages(this);
-    console.log(this.settings, stages);
-    throw new Error("You must implement the Register Method.");
+    return stages[stage] || [];
   }
+
+  register() {}
+
+
 }
