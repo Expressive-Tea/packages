@@ -1,5 +1,5 @@
-import {BOOT_STAGES} from "../constants";
-import {getClass, getStage, setStage} from "../helpers";
+import {BOOT_STAGES} from '../constants';
+import {getClass, getStage, setStage} from '../helpers';
 
 export function Stage(stage: BOOT_STAGES, required: Boolean = false): (target, propertyKey, descriptor) => void {
     return (target, propertyKey, descriptor) => {
@@ -14,4 +14,3 @@ export function Stage(stage: BOOT_STAGES, required: Boolean = false): (target, p
         setStage(stage, selectedStage, target);
     };
 }
-

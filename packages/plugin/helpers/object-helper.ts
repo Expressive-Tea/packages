@@ -1,5 +1,5 @@
-import Metadata from "../classes/Metadata";
-import {PLUGIN_STAGES_KEY} from "../constants";
+import Metadata from '../classes/Metadata';
+import {PLUGIN_STAGES_KEY} from '../constants';
 
 /**
  * Get the provide constructor if target is an instance.
