@@ -1,4 +1,4 @@
-import {PACKAGES_FOLDER, PACKAGES_PATHS} from './setup';
+import {PACKAGES_FOLDER} from '../setup';
 import {task, series, dest} from 'gulp';
 import {createProject} from 'gulp-typescript';
 import * as sourcemaps from 'gulp-sourcemaps';
@@ -11,7 +11,7 @@ const registeredPackages = {
 
 const modules = Object.keys(registeredPackages);
 const distId = process.argv.indexOf('--dist');
-const dist = distId < 0 ? source : process.argv[distId + 1];
+const dist = distId < 0 ? PACKAGES_FOLDER : process.argv[distId + 1];
 
 function buildPackage(name: string): Stream {
     log(`Building ${name}...`);
@@ -26,7 +26,7 @@ function buildPackageDev(name: string): Stream {
     return registeredPackages[name]
         .src()
         .pipe(sourcemaps.init(0, '', 0, undefined))
-        .pipe(registeredPackages[packageName]())
+        .pipe(registeredPackages[name]())
         .pipe(
             sourcemaps.mapSources(
                 (sourcePath: string) => './' + sourcePath.split('/').pop(),
