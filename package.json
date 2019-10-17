@@ -23,7 +23,8 @@
   },
   "scripts": {
     "clean": "gulp clean:dist",
-    "build": "npm run clean && gulp build"
+    "build": "npm run clean && gulp build",
+    "publish": "npm run clean"
   },
   "repository": {
     "type": "git",
