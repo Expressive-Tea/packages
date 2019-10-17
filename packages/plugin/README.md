@@ -18,7 +18,7 @@ $ npm install @expressive-tea/plugin
 Create a new file import the `Plugin` **class** and the **[Boot Stages](https://github.com/Zero-OneiT/expresive-tea#boot-stages)**
 as is showing in the next example:
 
-```
+```typescript
 import { Plugin, BOOT_STAGES } from "@expressive-tea/plugin"
 import { Stage } from "@expressive-tea/plugin/decorators"
 import { Express } from "express"
@@ -49,7 +49,7 @@ export default class PluginTest extends Plugin {
 Then in the file where you have setting up your Expressive Tea project you need to use the `Pour` decorator and made an instance of your
 plugin to attach it to current project.
 
-```
+```typescript
 @ServerSettings({
 	port: 8080
 })
@@ -70,7 +70,7 @@ Placeholder abstract class to allow define staged methods and main information.
 | *Protected*  | **priority**  | Number | Defined Priority order. | 999  |
 | *Protected*  | **dependencies**  | String[]| Defined Plugin Dependencies.  | []  |
 
-```
+```typescript
 abstract class Plugin {
     readonly settings: ExpressiveTeaPluginSettings;
     protected name: string;
@@ -79,17 +79,18 @@ abstract class Plugin {
     private static isDependencyRegistered;
     constructor(settings?: ExpressiveTeaPluginSettings);
     getRegisteredStage(stage: BOOT_STAGES): any;
+}
 ```
 
 ### Stage Method Decorator
 Define a Method that will be run it on a Expressive Tea defined **[Boot Stages](https://github.com/Zero-OneiT/expresive-tea#boot-stages)**.
-```
+```typescript
 @Stage(stage: BOOT_STAGES, required?: Boolean): (target: any, propertyKey: any, descriptor: any) => void;
 method(server: Express): void;
 ```
 
 ### Interfaces
-```
+```typescript
 interface ExpressiveTeaServerProps {
     port?: number;
     [key: string]: any;
