@@ -5,6 +5,7 @@ import * as log from 'fancy-log';
 import {Stream} from 'stream';
 
 const registeredPackages = {
+    commons: createProject('packages/commons/tsconfig.json'),
     plugin: createProject('packages/plugin/tsconfig.json')
 };
 

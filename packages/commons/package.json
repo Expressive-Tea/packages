@@ -25,7 +25,5 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@types/express": "^4.17.1",
-    "@types/node": "^12.12.5"
   }
 }
