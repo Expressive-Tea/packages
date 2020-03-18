@@ -12,7 +12,7 @@ export function getClass(target: any): any {
 }
 
 export function getStages(target) {
-    return Metadata.get(PLUGIN_STAGES_KEY, target) || {};
+    return Metadata.get(PLUGIN_STAGES_KEY, getClass(target)) || {};
 }
 
 export function getStage(stage, target) {
