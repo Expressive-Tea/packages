@@ -4,17 +4,17 @@ import { getClass } from '../helpers';
 
 function get(key: string, target: any, propertyKey?: string | symbol, own: boolean = false) {
     return own ?
-        Reflect.getOwnMetadata(key, getClass(target), propertyKey!) :
-        Reflect.getMetadata(key, getClass(target), propertyKey!);
+        Reflect.getOwnMetadata(key, target, propertyKey!) :
+        Reflect.getMetadata(key, target, propertyKey!);
 }
 
 export default class Metadata {
     static get(key: string, target: any, propertyKey?: string | symbol): any {
-        return get(key, getClass(target), propertyKey!);
+        return get(key, target, propertyKey!);
     }
 
     static getOwn(key: string, target: any, propertyKey?: string | symbol): any {
-        return get(key, getClass(target), propertyKey!, true);
+        return get(key, target, propertyKey!, true);
     }
 
     static getType(target: any, propertyKey?: string | symbol): any {
@@ -35,7 +35,7 @@ export default class Metadata {
 
     static has(key: string, target: any, propertyKey?: string | symbol): boolean {
         try {
-            return Reflect.hasMetadata(key, getClass(target), propertyKey!);
+            return Reflect.hasMetadata(key, target, propertyKey!);
         } catch (er) {
         }
 
@@ -43,7 +43,7 @@ export default class Metadata {
     }
 
     static hasOwn(key: string, target: any, propertyKey?: string | symbol): boolean {
-        return Reflect.hasOwnMetadata(key, getClass(target), propertyKey!);
+        return Reflect.hasOwnMetadata(key, target, propertyKey!);
     }
 
     static setParamTypes(target: any, propertyKey: string | symbol, value: any): void {
@@ -51,7 +51,7 @@ export default class Metadata {
     }
 
     static delete(key: string, target: any, propertyKey?: string | symbol): boolean {
-        return Reflect.deleteMetadata(key, getClass(target), propertyKey!);
+        return Reflect.deleteMetadata(key, target, propertyKey!);
     }
 
     static getTargetsFromPropertyKey = (metadataKey: string | symbol): any[] =>
@@ -59,14 +59,14 @@ export default class Metadata {
 
     static set(key: string, value: any, target: any, propertyKey?: string | symbol): void {
         const targets: any[] = PROPERTIES.has(key) ? PROPERTIES.get(key) || [] : [];
-        const classConstructor = getClass(target);
+        const classConstructor = target;
 
         if (targets.indexOf(classConstructor) === -1) {
             targets.push(classConstructor);
             PROPERTIES.set(key, targets);
         }
 
-        Reflect.defineMetadata(key, value, getClass(target), propertyKey!);
+        Reflect.defineMetadata(key, value, target, propertyKey!);
     }
 
     static getParamTypes(targetPrototype: any, propertyKey?: string | symbol): any[] {
