@@ -1,6 +1,6 @@
 {
   "name": "@expressive-tea/plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Plugin Engine for Expressive Tea Framework.",
   "repository": {
     "type": "git",
