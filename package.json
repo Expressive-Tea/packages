@@ -4,7 +4,7 @@
   "description": "Expressive Tea: A Microframework to relax and take it easy.",
   "main": "gulpfile.js",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/gulp": "^4.0.6",
