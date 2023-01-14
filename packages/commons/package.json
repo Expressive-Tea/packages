@@ -1,14 +1,26 @@
 {
   "name": "@expressive-tea/commons",
-  "version": "0.0.1",
-  "description": "Commons for Expressive Tea Framework.",
+  "description": "Commons for Expressive Tea",
+  "version": "1.3.0",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/zero-oneit/open-source/expressive-tea.git"
+    "url": "https://github.com/Expressive-Tea/packages"
   },
   "bugs": {
-    "url": "https://gitlab.com/zero-oneit/open-source/expressive-tea/issues",
-    "email": "project@zero-oneit.com"
+    "url": "https://github.com/Expressive-Tea/packages/issues",
+    "email": "projects@expressive-tea.io"
+  },
+  "scripts": {
+    "build:dev": "tsc --project tsconfig.json --watch",
+    "build": "tsc --project tsconfig.json",
+    "clean": "trash '**/*.js' '**/*.d.ts' '**/*.js.map' '**/*.d.ts.map' '!node_modules/**/*'",
+    "linter": "tslint -c ../../tslint.json -p tsconfig.json",
+    "publish:prepare": "npm run clean && npm run build",
+    "postpublish": "npm run clean",
+    "prepublishOnly": "npm run linter && npm run publish:prepare"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "contributors": [
     "Diego Resendez <diego.resendez@zero-oneit.com> (https://github.com/zerooneit)"
@@ -20,10 +32,5 @@
     "decorators"
   ],
   "author": "Zero One IT <projects@zero-oneit.com>",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "reflect-metadata": "^0.1.13"
-  },
-  "devDependencies": {
-  }
+  "license": "Apache-2.0"
 }

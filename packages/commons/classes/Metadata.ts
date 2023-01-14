@@ -2,19 +2,19 @@
 import 'reflect-metadata';
 import { getClass } from '../helpers/object-helper';
 
-function get(key: string, target: any, propertyKey?: string | symbol, own: boolean = false) {
-  return own
-    ? Reflect.getOwnMetadata(key, target, propertyKey!)
-    : Reflect.getMetadata(key, target, propertyKey!);
+function get(key: string, target: any, propertyKey?: string | symbol, own = false) {
+  return own ?
+    Reflect.getOwnMetadata(key, getClass(target), propertyKey!) :
+    Reflect.getMetadata(key, getClass(target), propertyKey!);
 }
 
 export default class Metadata {
   static get(key: string, target: any, propertyKey?: string | symbol): any {
-    return get(key, target, propertyKey!);
+    return get(key, getClass(target), propertyKey!);
   }
 
   static getOwn(key: string, target: any, propertyKey?: string | symbol): any {
-    return get(key, target, propertyKey!, true);
+    return get(key, getClass(target), propertyKey!, true);
   }
 
   static getType(target: any, propertyKey?: string | symbol): any {
@@ -35,14 +35,14 @@ export default class Metadata {
 
   static has(key: string, target: any, propertyKey?: string | symbol): boolean {
     try {
-      return Reflect.hasMetadata(key, target, propertyKey!);
-    } catch (er) {}
-
-    return false;
+      return Reflect.hasMetadata(key, getClass(target), propertyKey!);
+    } catch (er) {
+      return false;
+    }
   }
 
   static hasOwn(key: string, target: any, propertyKey?: string | symbol): boolean {
-    return Reflect.hasOwnMetadata(key, target, propertyKey!);
+    return Reflect.hasOwnMetadata(key, getClass(target), propertyKey!);
   }
 
   static setParamTypes(target: any, propertyKey: string | symbol, value: any): void {
@@ -50,22 +50,22 @@ export default class Metadata {
   }
 
   static delete(key: string, target: any, propertyKey?: string | symbol): boolean {
-    return Reflect.deleteMetadata(key, target, propertyKey!);
+    return Reflect.deleteMetadata(key, getClass(target), propertyKey!);
   }
 
   static getTargetsFromPropertyKey = (metadataKey: string | symbol): any[] =>
-    PROPERTIES.has(metadataKey) ? PROPERTIES.get(metadataKey) || [] : [];
+    PROPERTIES.has(metadataKey) ? PROPERTIES.get(metadataKey) || [] : []
 
   static set(key: string, value: any, target: any, propertyKey?: string | symbol): void {
     const targets: any[] = PROPERTIES.has(key) ? PROPERTIES.get(key) || [] : [];
-    const classConstructor = target;
+    const classConstructor = getClass(target);
 
     if (targets.indexOf(classConstructor) === -1) {
       targets.push(classConstructor);
       PROPERTIES.set(key, targets);
     }
 
-    Reflect.defineMetadata(key, value, target, propertyKey!);
+    Reflect.defineMetadata(key, value, getClass(target), propertyKey!);
   }
 
   static getParamTypes(targetPrototype: any, propertyKey?: string | symbol): any[] {

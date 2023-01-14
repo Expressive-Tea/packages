@@ -2,36 +2,30 @@
   "name": "expressive-tea",
   "version": "1.0.0",
   "description": "Expressive Tea: A Microframework to relax and take it easy.",
-  "main": "gulpfile.js",
-  "dependencies": {
-    "lodash": "^4.17.21"
+  "private": true,
+  "engines": {
+    "node": ">= 16.0.0",
+    "npm": ">= 7.0.0"
   },
   "devDependencies": {
-    "@types/gulp": "^4.0.6",
-    "@types/node": "^12.11.1",
-    "@types/reflect-metadata": "^0.1.0",
-    "@types/express": "^4.17.1",
-    "@types/lodash": "^4.14.144",
-    "fancy-log": "^1.3.3",
-    "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-typescript": "^5.0.1",
-    "ts-node": "^8.4.1",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.4"
+    "@types/express": "4.17.13",
+    "@types/lodash": "4.14.176",
+    "@types/node": "16.11.6",
+    "@types/reflect-metadata": "0.1.0",
+    "trash-cli": "^4.0.0",
+    "tslint": "6.1.3",
+    "typescript": "4.4.4"
   },
-  "scripts": {
-    "clean": "gulp clean:dist",
-    "build": "npm run clean && gulp build",
-    "publish": "npm run clean"
-  },
+  "workspaces": [
+    "packages/commons",
+    "packages/plugin"
+  ],
   "repository": {
     "type": "git",
     "url": "git@gitlab.com:zero-oneit/open-source/expressive-tea.git"
   },
   "keywords": [
-    "Expressive",
+    "Expressive Tea",
     "Tea",
     "REST",
     "Decorators",
@@ -41,5 +35,9 @@
     "Packages"
   ],
   "author": "Zero One IT Desarrollos <project@zero-oneit.com>",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lodash": "4.17.21",
+    "reflect-metadata": "0.1.13"
+  }
 }
