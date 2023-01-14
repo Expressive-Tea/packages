@@ -1,7 +1,7 @@
 import { getClass } from '@expressive-tea/commons/helpers/object-helper';
 import { BOOT_STAGES } from '@expressive-tea/commons/constants';
 import { ExpressiveTeaServerProps, ExpressiveTeaPluginProps } from '@expressive-tea/commons/interfaces';
-import { getStages } from 'helpers';
+import { getStages } from '../helpers';
 import { findIndex, size, each } from 'lodash';
 import { DependencyNotFound } from '../exceptions';
 
