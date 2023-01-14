@@ -1,6 +1,6 @@
 import { BOOT_STAGES } from '@expressive-tea/commons/constants';
 import { getClass } from '@expressive-tea/commons/helpers/object-helper';
-import { getStage, setStage } from 'helpers';
+import { getStage, setStage } from '../helpers';
 
 export function Stage(stage: BOOT_STAGES, required: boolean = false): (target, propertyKey, descriptor) => void {
   return (target, propertyKey, descriptor) => {

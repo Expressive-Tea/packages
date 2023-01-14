@@ -1,6 +1,6 @@
 {
   "name": "@expressive-tea/plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Plugin Engine for Expressive Tea Framework.",
   "scripts": {
     "build:dev": "tsc --project tsconfig.json --watch",
