@@ -1,15 +1,6 @@
+import { getClass } from '@expressive-tea/commons/helpers/object-helper';
 import { PLUGIN_STAGES_KEY } from '../constants';
 import {StorageManager} from './storage-helper';
-
-/**
- * Get the provide constructor if target is an instance.
- * @param target
- * @returns {*}
- * @ignore
- */
-export function getClass(target: any): any {
-  return target.prototype ? target : target.constructor;
-}
 
 export function getStages(target) {
   return StorageManager.get(PLUGIN_STAGES_KEY, getClass(target)) || {};

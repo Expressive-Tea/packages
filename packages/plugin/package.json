@@ -34,7 +34,6 @@
   "author": "Expressive Tea <projects@expressive-tea.io>",
   "license": "Apache-2.0",
   "dependencies": {
-  },
-  "devDependencies": {
+    "@expressive-tea/commons": "^1.0.0"
   }
 }

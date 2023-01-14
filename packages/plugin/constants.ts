@@ -1,9 +1,1 @@
-export enum BOOT_STAGES {
-  BOOT_DEPENDENCIES,
-  INITIALIZE_MIDDLEWARES,
-  APPLICATION,
-  AFTER_APPLICATION_MIDDLEWARES,
-  START
-}
-
 export const PLUGIN_STAGES_KEY = 'expressive-tea:plugin:stages';

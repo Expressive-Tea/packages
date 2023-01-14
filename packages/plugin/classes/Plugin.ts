@@ -1,11 +1,9 @@
-import {getStages, getClass} from '../helpers';
-import {BOOT_STAGES} from '../constants';
-import {
-  ExpressiveTeaServerProps,
-  ExpressiveTeaPluginProps
-} from '../interfaces';
-import {findIndex, size, each} from 'lodash';
-import {DependencyNotFound} from '../exceptions';
+import { getClass } from '@expressive-tea/commons/helpers/object-helper';
+import { BOOT_STAGES } from '@expressive-tea/commons/constants';
+import { ExpressiveTeaServerProps, ExpressiveTeaPluginProps } from '@expressive-tea/commons/interfaces';
+import { getStages } from 'helpers';
+import { findIndex, size, each } from 'lodash';
+import { DependencyNotFound } from '../exceptions';
 
 export abstract class Plugin {
   protected name: string;
@@ -28,7 +26,9 @@ export abstract class Plugin {
   ): ExpressiveTeaPluginProps[] {
     if (size(this.dependencies)) {
       each(this.dependencies, dependency => {
-        if (!Plugin.isDependencyRegistered(dependency, registeredPlugins.map(d => d.name))) {
+        if (
+          !Plugin.isDependencyRegistered(dependency, registeredPlugins.map(d => d.name))
+      ) {
           throw new DependencyNotFound(dependency);
         }
       });
