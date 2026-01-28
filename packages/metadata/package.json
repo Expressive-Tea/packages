@@ -1,0 +1,51 @@
+{
+  "name": "@expressive-tea/metadata",
+  "version": "2026.1.0",
+  "description": "Powerful metadata management utilities for TypeScript decorators",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:clear": "jest --clearCache",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Expressive-Tea/packages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Expressive-Tea/packages/issues",
+    "email": "support@expressive-tea.io"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "contributors": [
+    "Diego Resendez <diego.resendez@expressive-tea.io> (https://github.com/chrnx-dev)"
+  ],
+  "keywords": [
+    "metadata",
+    "reflect-metadata",
+    "decorators",
+    "typescript",
+    "utilities",
+    "expressive-tea",
+    "dependency-injection",
+    "annotations"
+  ],
+  "author": "Zero One IT <projects@expressive-tea.io>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "reflect-metadata": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1"
+  }
+}
