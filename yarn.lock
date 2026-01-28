@@ -538,7 +538,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@expressive-tea/commons@workspace:packages/commons"
   dependencies:
-    "@expressive-tea/metadata": "npm:^2.0.0"
+    "@expressive-tea/metadata": "npm:^2026.1.0"
     reflect-metadata: "npm:^0.2.0"
   peerDependencies:
     "@expressive-tea/core": ">=2.0.0"
@@ -548,7 +548,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@expressive-tea/metadata@npm:^2.0.0, @expressive-tea/metadata@workspace:packages/metadata":
+"@expressive-tea/metadata@npm:^2026.1.0, @expressive-tea/metadata@workspace:packages/metadata":
   version: 0.0.0-use.local
   resolution: "@expressive-tea/metadata@workspace:packages/metadata"
   dependencies:
@@ -588,7 +588,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@expressive-tea/plugin@workspace:packages/plugin"
   dependencies:
-    "@expressive-tea/metadata": "npm:^2.0.0"
+    "@expressive-tea/metadata": "npm:^2026.1.0"
     "@types/express": "npm:^4.17.1"
     reflect-metadata: "npm:^0.2.0"
   peerDependencies:

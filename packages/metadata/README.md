@@ -8,6 +8,8 @@
 
 A powerful, lightweight metadata management library for TypeScript decorators built on top of `reflect-metadata`. Provides both low-level metadata APIs and high-level decorator utilities for common patterns.
 
+> **📅 Versioning:** This package uses [Calendar Versioning (CalVer)](./VERSIONING.md) in the format `YYYY.MM.MICRO` (e.g., `2026.1.0`). [Learn more →](./VERSIONING.md)
+
 ## Features
 
 - 🎯 **Framework-agnostic** - Works with any TypeScript project, not just Expressive Tea
@@ -17,6 +19,7 @@ A powerful, lightweight metadata management library for TypeScript decorators bu
 - 🪶 **Lightweight** - Minimal dependencies (only `reflect-metadata`)
 - 📦 **Tree-shakeable** - Import only what you need
 - ✅ **Well-tested** - 90% test coverage with 56 comprehensive tests
+- 📅 **CalVer Versioning** - Clear release timeline with `YYYY.MM.MICRO` format
 
 ## Installation
 
@@ -691,6 +694,37 @@ Contributions are welcome! Please see our [Contributing Guide](../../CONTRIBUTIN
 3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+## Versioning
+
+This package uses **Calendar Versioning (CalVer)** in the format `YYYY.MM.MICRO`:
+
+- **YYYY** - Year of release (e.g., 2026)
+- **MM** - Month of release (1-12, not zero-padded)
+- **MICRO** - Incremental release number within that month
+
+**Example:** `2026.1.0` = First release in January 2026
+
+### Why CalVer?
+
+Since `@expressive-tea/metadata` is framework-agnostic and independent of Expressive Tea's release cycle, CalVer provides:
+
+- ✅ Clear release timeline
+- ✅ Framework independence
+- ✅ No breaking change ambiguity
+- ✅ Easy deprecation communication
+
+### Version Ranges (package.json)
+
+```json
+{
+  "dependencies": {
+    "@expressive-tea/metadata": "~2026.1.0"  // Recommended: updates within same month
+  }
+}
+```
+
+**Learn more:** See [VERSIONING.md](./VERSIONING.md) for complete details on versioning policy, breaking changes, and upgrade strategies.
 
 ## License
 
