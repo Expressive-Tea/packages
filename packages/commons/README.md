@@ -31,6 +31,7 @@ Think of it as your **metadata Swiss Army knife** - a lean, mean, type-safe wrap
 ## ⚡ Features That'll Make You Smile
 
 - ✨ **Metadata Management** - Store and retrieve data on classes, methods, and properties with ease
+- 🎨 **Decorator Utilities** - Ready-to-use decorators (@SetMetadata, @Meta, @Deprecated, and more!)
 - 🎯 **TypeScript-First** - Written in TS5 with strict mode - your IDE will love you
 - 🔒 **100% Type-Safe** - No more `any` nightmares in your decorator code
 - 📦 **Feather-Light** - Zero dependencies except `reflect-metadata`
@@ -259,6 +260,176 @@ const Constructor = getClass(instance);
 console.log(Constructor.name); // 'UserController'
 console.log(Constructor === UserController); // true
 ```
+
+---
+
+## 🎁 Decorator Utilities
+
+**NEW in v2.0.0!** Commons now includes ready-to-use decorator utilities to make working with metadata even easier.
+
+### @SetMetadata
+
+Set metadata with a single decorator:
+
+```typescript
+import { SetMetadata, Metadata } from '@expressive-tea/commons';
+
+// Static value
+@SetMetadata('role', 'admin')
+class AdminController {}
+
+// Dynamic value with factory function
+@SetMetadata('timestamp', () => Date.now())
+class MyClass {}
+
+// On methods
+class UserController {
+  @SetMetadata('route:path', '/users')
+  @SetMetadata('route:method', 'GET')
+  getUsers() {}
+}
+
+// Retrieve the metadata
+const role = Metadata.get('role', AdminController); // 'admin'
+const path = Metadata.get('route:path', UserController.prototype, 'getUsers'); // '/users'
+```
+
+### @Meta
+
+Set multiple metadata key-value pairs at once:
+
+```typescript
+import { Meta, Metadata } from '@expressive-tea/commons';
+
+// Multiple values on a class
+@Meta({
+  controller: true,
+  basePath: '/api',
+  version: 'v1',
+  deprecated: false
+})
+class ApiController {}
+
+// Multiple values on a method
+class ProductController {
+  @Meta({
+    'route:path': '/products',
+    'route:method': 'GET',
+    'cache:ttl': 3600,
+    'auth:required': true
+  })
+  getProducts() {}
+}
+
+// Retrieve any key
+const basePath = Metadata.get('basePath', ApiController); // '/api'
+const cacheTtl = Metadata.get('cache:ttl', ProductController.prototype, 'getProducts'); // 3600
+```
+
+### @InheritMetadata
+
+Copy metadata from one class to another:
+
+```typescript
+import { Meta, InheritMetadata, Metadata } from '@expressive-tea/commons';
+
+// Base class with configuration
+@Meta({ timeout: 5000, retries: 3, maxSize: 100 })
+class BaseController {}
+
+// Inherit specific keys
+@InheritMetadata(BaseController, ['timeout', 'retries'])
+class UserController {}
+
+// Check inherited values
+const timeout = Metadata.get('timeout', UserController); // 5000
+const retries = Metadata.get('retries', UserController); // 3
+const maxSize = Metadata.get('maxSize', UserController); // undefined (not inherited)
+```
+
+### @CacheInMetadata
+
+Cache method results in metadata:
+
+```typescript
+import { CacheInMetadata, Metadata } from '@expressive-tea/commons';
+
+class ConfigProvider {
+  @CacheInMetadata('computed:config')
+  getConfig() {
+    console.log('Computing expensive config...');
+    return {
+      apiKey: process.env.API_KEY,
+      timeout: 5000
+    };
+  }
+}
+
+const provider = new ConfigProvider();
+provider.getConfig(); // Logs: "Computing expensive config..."
+provider.getConfig(); // Returns cached value, no log!
+
+// Access the cached value directly
+const cached = Metadata.get('computed:config', ConfigProvider.prototype, 'getConfig');
+```
+
+### @Deprecated
+
+Mark classes or methods as deprecated:
+
+```typescript
+import { Deprecated, Metadata } from '@expressive-tea/commons';
+
+// Deprecate a class
+@Deprecated('Use NewUserController instead')
+class UserController {}
+
+// Deprecate a method with warning
+class ProductService {
+  @Deprecated('Use findById() instead', true)
+  getProduct(id: string) {
+    return this.findById(id);
+  }
+  
+  findById(id: string) {
+    return { id, name: 'Product' };
+  }
+}
+
+// When called, logs:  [DEPRECATED] ProductService.getProduct is deprecated. Use findById() instead
+const service = new ProductService();
+service.getProduct('123');
+
+// Check if deprecated
+const isDeprecated = Metadata.get('deprecated', UserController); // true
+const message = Metadata.get('deprecated:message', UserController); // 'Use NewUserController instead'
+```
+
+### Combining Decorators
+
+Stack them up for maximum power! 🚀
+
+```typescript
+import { Meta, SetMetadata, Deprecated, CacheInMetadata } from '@expressive-tea/commons';
+
+@Meta({ type: 'controller', version: 'v2' })
+@SetMetadata('basePath', '/api/v2')
+class ApiController {
+  @SetMetadata('route:path', '/users')
+  @Meta({ method: 'GET', auth: true, rateLimit: 100 })
+  @CacheInMetadata('cache:users')
+  getUsers() {
+    return [];
+  }
+  
+  @Deprecated('Use getUsers() with pagination instead')
+  getAllUsers() {
+    return this.getUsers();
+  }
+}
+```
+
+---
 
 ## 📖 API Reference
 

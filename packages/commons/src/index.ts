@@ -13,6 +13,7 @@
 import 'reflect-metadata';
 
 export { default as Metadata } from './classes/Metadata';
+export * from './decorators';
 export * from './helpers/object-helper';
 export * from './interfaces';
 export * from './types';

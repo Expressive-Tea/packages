@@ -534,11 +534,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expressive-tea/commons@workspace:packages/commons":
+"@expressive-tea/commons@npm:^2.0.0, @expressive-tea/commons@workspace:packages/commons":
   version: 0.0.0-use.local
   resolution: "@expressive-tea/commons@workspace:packages/commons"
   dependencies:
     reflect-metadata: "npm:^0.2.0"
+  peerDependencies:
+    "@expressive-tea/core": ">=2.0.0"
+  peerDependenciesMeta:
+    "@expressive-tea/core":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -573,10 +578,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@expressive-tea/plugin@workspace:packages/plugin"
   dependencies:
+    "@expressive-tea/commons": "npm:^2.0.0"
     "@types/express": "npm:^4.17.1"
-    "@types/lodash": "npm:^4.14.144"
-    lodash: "npm:^4.17.15"
     reflect-metadata: "npm:^0.2.0"
+  peerDependencies:
+    "@expressive-tea/core": ">=2.0.0"
+  peerDependenciesMeta:
+    "@expressive-tea/core":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -1285,13 +1294,6 @@ __metadata:
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
   checksum: 10c0/6bf5337bc447b706bb5b4431d37686aa2ea6d07cfd6f79cc31de80170d6ff9b1c7384a9c0ccbc45b3f512bae9e9f75c2e12109806a15331dc94e8a8db6dbb4ac
-  languageName: node
-  linkType: hard
-
-"@types/lodash@npm:^4.14.144":
-  version: 4.17.23
-  resolution: "@types/lodash@npm:4.17.23"
-  checksum: 10c0/9d9cbfb684e064a2b78aab9e220d398c9c2a7d36bc51a07b184ff382fa043a99b3d00c16c7f109b4eb8614118f4869678dbae7d5c6700ed16fb9340e26cc0bf6
   languageName: node
   linkType: hard
 
@@ -4513,13 +4515,6 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: 10c0/402fa16a1edd7538de5b5903a90228aa48eb5533986ba7fa26606a49db2572bf414ff73a2c9f5d5fd36b31c46a5d5c7e1527749c07cbcf965ccff5fbdf32c506
-  languageName: node
-  linkType: hard
-
-"lodash@npm:^4.17.15":
-  version: 4.17.23
-  resolution: "lodash@npm:4.17.23"
-  checksum: 10c0/1264a90469f5bb95d4739c43eb6277d15b6d9e186df4ac68c3620443160fc669e2f14c11e7d8b2ccf078b81d06147c01a8ccced9aab9f9f63d50dcf8cace6bf6
   languageName: node
   linkType: hard
 
