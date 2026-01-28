@@ -22,6 +22,22 @@
 
 ---
 
+> [!NOTE]
+> ### 📦 Metadata Package
+>
+> **As of v2.0.0, all metadata functionality has been extracted to [@expressive-tea/metadata](../metadata)**
+>
+> This package now re-exports all metadata APIs from `@expressive-tea/metadata` for backward compatibility:
+> - `Metadata` class (metadata management)
+> - `@SetMetadata`, `@Meta`, `@InheritMetadata`, `@CacheInMetadata`, `@Deprecated` decorators
+> - `getClass` helper utility
+>
+> **For new projects**, consider using `@expressive-tea/metadata` directly for better tree-shaking and smaller bundle sizes.
+>
+> **For existing projects**, no changes needed - everything works the same way!
+
+---
+
 ## Why Commons?
 
 Ever wondered how decorators like `@Route` or `@Inject` actually work under the hood? **That's where commons comes in!** This package is the secret sauce that makes TypeScript decorators feel like pure magic ✨

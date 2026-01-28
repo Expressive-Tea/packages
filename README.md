@@ -28,6 +28,29 @@ This monorepo contains the foundational packages for the **Expressive Tea** fram
 
 ## Packages
 
+### [@expressive-tea/metadata](./packages/metadata)
+
+[![npm version](https://img.shields.io/npm/v/@expressive-tea/metadata?style=flat-square)](https://www.npmjs.com/package/@expressive-tea/metadata)
+[![npm downloads](https://img.shields.io/npm/dw/@expressive-tea/metadata?style=flat-square)](https://www.npmjs.com/package/@expressive-tea/metadata)
+
+**Framework-agnostic TypeScript metadata management utilities for decorators.**
+
+**Features:**
+- ✨ Comprehensive metadata management API
+- 🎨 5 pre-built decorator utilities (@SetMetadata, @Meta, @InheritMetadata, @CacheInMetadata, @Deprecated)
+- 🔒 Type-safe with full TypeScript support
+- 🪶 Lightweight with minimal dependencies
+- 🌐 Framework-agnostic (works with any TypeScript project)
+
+**Install:**
+```bash
+npm install @expressive-tea/metadata reflect-metadata
+```
+
+**[📖 Full Documentation →](./packages/metadata/README.md)**
+
+---
+
 ### [@expressive-tea/commons](./packages/commons)
 
 [![npm version](https://img.shields.io/npm/v/@expressive-tea/commons?style=flat-square)](https://www.npmjs.com/package/@expressive-tea/commons)
@@ -36,10 +59,10 @@ This monorepo contains the foundational packages for the **Expressive Tea** fram
 Core utilities and shared types for the Expressive Tea framework.
 
 **Features:**
-- ✨ Metadata management (wrapper around `reflect-metadata`)
+- ✨ Re-exports all metadata functionality from [@expressive-tea/metadata](./packages/metadata)
 - 🎯 TypeScript-first with full type definitions
 - 🔒 Strict mode enabled for maximum type safety
-- 📦 Zero dependencies (only peer dep: `reflect-metadata`)
+- 📦 Lightweight (re-export layer for backward compatibility)
 
 **Install:**
 ```bash
