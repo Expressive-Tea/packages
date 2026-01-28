@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/Expressive-Tea/packages/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 💡 Gitter Chat
+    url: https://gitter.im/Expressive-Tea/expresive-tea
+    about: Real-time chat with maintainers and community
+  - name: 📚 Documentation
+    url: https://zero-oneit.github.io/expresive-tea/
+    about: Read the official Expressive Tea documentation
+  - name: 🔒 Security Issue
+    url: https://github.com/Expressive-Tea/packages/blob/main/.github/SECURITY.md
+    about: Report a security vulnerability privately

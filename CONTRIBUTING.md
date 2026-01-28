@@ -1,92 +1,357 @@
-# Contributing
+# Contributing to Expressive Tea Packages
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. 
+Thank you for your interest in contributing to Expressive Tea! 🎉
 
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+This document provides guidelines for contributing to the `@expressive-tea/commons` and `@expressive-tea/plugin` packages.
 
-## Pull Request Process
+## 📋 Table of Contents
 
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a 
-   build.
-2. Update the README.md with details of changes to the interface, this includes new environment 
-   variables, exposed ports, useful file locations and container parameters.
-3. Increase the version numbers in any examples files and the README.md to the new version that this
-   Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you 
-   do not have permission to do that, you may request the second reviewer to merge it for you.
+- [Code of Conduct](#code-of-conduct)
+- [Getting Started](#getting-started)
+- [Development Setup](#development-setup)
+- [Making Changes](#making-changes)
+- [Testing](#testing)
+- [Submitting Changes](#submitting-changes)
+- [Coding Standards](#coding-standards)
+- [Project Structure](#project-structure)
 
 ## Code of Conduct
 
-### Our Pledge
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to project@zero-oneit.com.
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, gender identity and expression, level of experience,
-nationality, personal appearance, race, religion, or sexual identity and
-orientation.
+## Getting Started
 
-### Our Standards
+### Prerequisites
 
-Examples of behavior that contributes to creating a positive environment
-include:
+- **Node.js** >= 18.0.0
+- **Yarn** 4.11.0 (package manager)
+- **Git** for version control
+- **TypeScript** >= 5.0.0 knowledge
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+### Find an Issue
 
-Examples of unacceptable behavior by participants include:
+1. Browse [existing issues](https://github.com/Expressive-Tea/packages/issues)
+2. Look for `good-first-issue` or `help-wanted` labels
+3. Comment on the issue to let others know you're working on it
 
-* The use of sexualized language or imagery and unwelcome sexual attention or
-advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic
-  address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+### Ask Questions
 
-### Our Responsibilities
+- Not sure about something? Ask in [Discussions](https://github.com/Expressive-Tea/packages/discussions)
+- Need help? Check our [Support Guide](.github/SUPPORT.md)
 
-Project maintainers are responsible for clarifying the standards of acceptable
-behavior and are expected to take appropriate and fair corrective action in
-response to any instances of unacceptable behavior.
+## Development Setup
 
-Project maintainers have the right and responsibility to remove, edit, or
-reject comments, commits, code, wiki edits, issues, and other contributions
-that are not aligned to this Code of Conduct, or to ban temporarily or
-permanently any contributor for other behaviors that they deem inappropriate,
-threatening, offensive, or harmful.
+### 1. Fork and Clone
 
-### Scope
+```bash
+# Fork the repository on GitHub, then clone your fork
+git clone https://github.com/YOUR_USERNAME/expresive-tea.git
+cd expresive-tea/packages
+```
 
-This Code of Conduct applies both within project spaces and in public spaces
-when an individual is representing the project or its community. Examples of
-representing a project or community include using an official project e-mail
-address, posting via an official social media account, or acting as an appointed
-representative at an online or offline event. Representation of a project may be
-further defined and clarified by project maintainers.
+### 2. Install Dependencies
 
-### Enforcement
+```bash
+# Enable Corepack (for Yarn 4)
+corepack enable
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at diego.resendez@zero-oneit.com. All
-complaints will be reviewed and investigated and will result in a response that
-is deemed necessary and appropriate to the circumstances. The project team is
-obligated to maintain confidentiality with regard to the reporter of an incident.
-Further details of specific enforcement policies may be posted separately.
+# Install dependencies
+yarn install
+```
 
-Project maintainers who do not follow or enforce the Code of Conduct in good
-faith may face temporary or permanent repercussions as determined by other
-members of the project's leadership.
+### 3. Build Packages
 
-### Attribution
+```bash
+# Clean and build all packages
+yarn clean && yarn build
+```
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at [http://contributor-covenant.org/version/1/4][version]
+### 4. Run Tests
 
-[homepage]: http://contributor-covenant.org
-[version]: http://contributor-covenant.org/version/1/4/
+```bash
+# Run all tests
+yarn test
+
+# Run tests in watch mode
+yarn test:watch
+
+# Run tests with coverage
+yarn test
+```
+
+### 5. Verify Setup
+
+```bash
+# Lint code
+yarn lint
+
+# Type check
+npx tsc --noEmit -p packages/commons
+npx tsc --noEmit -p packages/plugin
+```
+
+## Making Changes
+
+### Create a Branch
+
+```bash
+# Create a new branch from master
+git checkout -b feature/my-new-feature
+# or
+git checkout -b fix/my-bug-fix
+```
+
+Branch naming conventions:
+- `feature/` - New features
+- `fix/` - Bug fixes
+- `docs/` - Documentation updates
+- `refactor/` - Code refactoring
+- `test/` - Test updates
+- `chore/` - Build/tooling changes
+
+### Make Your Changes
+
+1. **Write code** following our [coding standards](#coding-standards)
+2. **Add tests** for new functionality
+3. **Update documentation** (JSDoc, README, etc.)
+4. **Run tests** to ensure everything works
+5. **Lint your code** to catch style issues
+
+### Commit Messages
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+**Types**:
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation changes
+- `style:` - Code style changes (formatting)
+- `refactor:` - Code refactoring
+- `test:` - Test updates
+- `chore:` - Build/tooling changes
+
+**Examples**:
+```bash
+feat(plugin): add support for async stage methods
+
+Added ability to use async/await in @Stage decorated methods.
+This allows plugins to perform asynchronous operations during
+boot stages.
+
+Closes #123
+```
+
+```bash
+fix(commons): resolve metadata memory leak in WeakMap
+
+Fixed issue where metadata storage was not properly garbage
+collected due to strong references.
+
+Fixes #456
+```
+
+## Testing
+
+### Writing Tests
+
+- Place tests in `packages/*/src/__test__/unit/` directory
+- Name test files as `*.spec.ts`
+- Follow existing test patterns
+- Aim for >90% code coverage
+
+**Example test**:
+
+```typescript
+import { Metadata } from '../../classes/Metadata';
+
+describe('Metadata', () => {
+  describe('set and get', () => {
+    it('should store and retrieve metadata', () => {
+      class TestClass {}
+      Metadata.set('test-key', 'test-value', TestClass);
+      const result = Metadata.get('test-key', TestClass);
+      expect(result).toBe('test-value');
+    });
+  });
+});
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+yarn test
+
+# Run specific package tests
+cd packages/commons && yarn test
+cd packages/plugin && yarn test
+
+# Run specific test file
+npx jest packages/commons/src/__test__/unit/metadata.spec.ts
+
+# Run with coverage
+yarn test --coverage
+```
+
+## Submitting Changes
+
+### Before Submitting
+
+Ensure your changes pass all checks:
+
+```bash
+# 1. Clean and build
+yarn clean && yarn build
+
+# 2. Run linter
+yarn lint
+
+# 3. Run all tests
+yarn test
+
+# 4. Type check
+npx tsc --noEmit -p packages/commons
+npx tsc --noEmit -p packages/plugin
+```
+
+### Create a Pull Request
+
+1. **Push your branch** to your fork
+   ```bash
+   git push origin feature/my-new-feature
+   ```
+
+2. **Open a Pull Request** on GitHub
+   - Use our [PR template](.github/PULL_REQUEST_TEMPLATE.md)
+   - Link related issues
+   - Provide clear description
+   - Add screenshots (if applicable)
+
+3. **Wait for review**
+   - Address review comments
+   - Keep PR updated with master
+   - Be patient and respectful
+
+### PR Review Process
+
+1. **Automated checks** run (tests, linting, build)
+2. **Maintainer review** (code quality, design, tests)
+3. **Revisions** if needed
+4. **Approval** and merge
+
+## Coding Standards
+
+### TypeScript
+
+- Use **TypeScript 5.x** features
+- Enable **strict mode**
+- Prefer **interfaces** over type aliases for objects
+- Use **explicit return types** for public methods
+- Avoid `any` except in tests or reflect-metadata contexts
+
+### Code Style
+
+- **Prettier** formats all code (120 char line length)
+- **ESLint** enforces code quality rules
+- Use **2 spaces** for indentation
+- Use **single quotes** for strings
+- Include **semicolons**
+- No **trailing commas**
+
+### Documentation
+
+- Add **JSDoc** to all public APIs
+- Include **@param**, **@returns**, **@since** tags
+- Provide **@example** code blocks
+- Use **TypeScript** in examples
+
+**Example**:
+
+```typescript
+/**
+ * Store metadata on a class or property
+ * 
+ * @param key - Metadata key identifier
+ * @param value - Value to store
+ * @param target - Target class constructor
+ * @param propertyKey - Optional property name
+ * @since 2.0.0
+ * 
+ * @example
+ * ```typescript
+ * Metadata.set('my-key', 'value', MyClass);
+ * ```
+ */
+static set(key: string, value: any, target: any, propertyKey?: string): void {
+  // ...
+}
+```
+
+### File Naming
+
+- Use **kebab-case** for file names: `object-helper.ts`
+- Test files end with `.spec.ts`
+- Keep files focused and single-purpose
+
+## Project Structure
+
+```
+packages/
+├── .github/              # GitHub templates
+├── packages/
+│   ├── commons/          # @expressive-tea/commons
+│   │   ├── src/
+│   │   │   ├── classes/
+│   │   │   ├── helpers/
+│   │   │   ├── interfaces/
+│   │   │   ├── types/
+│   │   │   └── __test__/unit/
+│   │   ├── dist/         # Build output (gitignored)
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   └── jest.config.js
+│   └── plugin/           # @expressive-tea/plugin
+│       ├── src/
+│       │   ├── classes/
+│       │   ├── decorators/
+│       │   ├── helpers/
+│       │   ├── libs/
+│       │   ├── exceptions/
+│       │   └── __test__/unit/
+│       ├── dist/         # Build output (gitignored)
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── jest.config.js
+├── package.json          # Root workspace config
+├── jest.config.js        # Root test config
+├── eslint.config.js      # ESLint v9 flat config
+├── tsconfig.base.json    # Shared TS config
+└── README.md
+```
+
+## Need Help?
+
+- 💬 [Gitter Chat](https://gitter.im/Expressive-Tea/expresive-tea)
+- 💡 [GitHub Discussions](https://github.com/Expressive-Tea/packages/discussions)
+- 📧 Email: project@zero-oneit.com
+
+## Recognition
+
+Contributors are recognized in:
+- Project README
+- Release notes
+- GitHub contributors page
+
+---
+
+**Thank you for contributing to Expressive Tea! 🙏**
+
+Your efforts help make this project better for everyone.

@@ -1,33 +1,56 @@
 {
   "name": "@expressive-tea/plugin",
-  "version": "0.0.3",
-  "description": "A Plugin Engine for Expressive Tea Framework.",
+  "version": "2.0.0",
+  "description": "Plugin architecture system for Expressive Tea framework",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:clear": "jest --clearCache",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts"
+  },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/zero-oneit/open-source/expressive-tea.git"
+    "url": "https://github.com/Expressive-Tea/packages.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/zero-oneit/open-source/expressive-tea/issues",
+    "url": "https://github.com/Expressive-Tea/packages/issues",
     "email": "project@zero-oneit.com"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "contributors": [
-    "Diego Resendez <diego.resendez@zero-oneit.com> (https://github.com/zerooneit)"
+    "Diego Resendez <diego.resendez@zero-oneit.com> (https://github.com/chrnx-dev)"
   ],
   "keywords": [
-    "Expressive-Tea",
+    "expressive-tea",
     "plugin",
     "typescript",
-    "decorators"
+    "decorators",
+    "lifecycle"
   ],
   "author": "Zero One IT <projects@zero-oneit.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "lodash": "^4.17.15",
-    "reflect-metadata": "^0.1.13"
-
+    "reflect-metadata": "^0.2.0"
+  },
+  "peerDependencies": {
+    "@expressive-tea/core": ">=2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@expressive-tea/core": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "@types/express": "^4.17.1",
-    "@types/lodash": "^4.14.144"
+    "@types/express": "^4.17.1"
   }
 }
