@@ -6,17 +6,19 @@
 [![npm downloads](https://img.shields.io/npm/dw/@expressive-tea/plugin?style=flat-square)](https://www.npmjs.com/package/@expressive-tea/plugin)
 [![license](https://img.shields.io/github/license/Expressive-Tea/packages?style=flat-square)](https://github.com/Expressive-Tea/packages/blob/main/LICENSE)
 
+> **📅 Versioning:** This package uses [Calendar Versioning (CalVer)](./VERSIONING.md) in the format `YYYY.MM.MICRO` (e.g., `2026.1.0`). [Learn more →](../../VERSIONING.md)
+
 ---
 
 > [!IMPORTANT]
 > ### 🔄 Version Compatibility
 > 
-> **This package (v2.0.0) requires `@expressive-tea/core` >= 2.0.0**
+> **This package (v2026.1.0) requires `@expressive-tea/core` >= 2.0.0**
 > 
 > - ✅ **Compatible**: `@expressive-tea/core@2.x.x` and above
 > - ❌ **Not compatible**: `@expressive-tea/core@1.x.x` or below
 > 
-> Using Expressive Tea Core v1.x? You'll need `@expressive-tea/plugin@1.x.x` instead.
+> Using Expressive Tea Core v1.x? You'll need `@expressive-tea/plugin@1.x.x` (SemVer) instead.
 > 
 > **📦 Expressive Tea Core Reference**: This package is designed to work with [Expressive Tea Core](https://github.com/Expressive-Tea/expresive-tea) - the main framework.
 

@@ -4,19 +4,24 @@
 
 [![npm version](https://img.shields.io/npm/v/@expressive-tea/commons?style=flat-square&label=commons)](https://www.npmjs.com/package/@expressive-tea/commons)
 [![npm version](https://img.shields.io/npm/v/@expressive-tea/plugin?style=flat-square&label=plugin)](https://www.npmjs.com/package/@expressive-tea/plugin)
+[![npm version](https://img.shields.io/npm/v/@expressive-tea/metadata?style=flat-square&label=metadata)](https://www.npmjs.com/package/@expressive-tea/metadata)
 [![license](https://img.shields.io/github/license/Expressive-Tea/packages?style=flat-square)](https://github.com/Expressive-Tea/packages/blob/main/LICENSE)
+
+> **📅 Versioning:** All packages use [Calendar Versioning (CalVer)](./VERSIONING.md) in the format `YYYY.MM.MICRO`. Current version: `2026.1.0`
 
 ---
 
 > [!IMPORTANT]
 > ### 🔄 Version Compatibility Notice
 > 
-> **These packages (v2.0.0) are designed for `@expressive-tea/core` >= 2.0.0**
+> **These packages (v2026.1.0) are designed for `@expressive-tea/core` >= 2.0.0**
 > 
 > - ✅ **Compatible with**: [@expressive-tea/core](https://github.com/Expressive-Tea/expresive-tea) v2.x.x and above
 > - ❌ **Not compatible with**: @expressive-tea/core v1.x.x or below
 > 
-> If you're using Expressive Tea Core v1.x, please use the 1.x versions of these packages.
+> If you're using Expressive Tea Core v1.x, please use the 1.x (SemVer) versions of these packages.
+> 
+> **📖 Versioning:** See [VERSIONING.md](./VERSIONING.md) for complete CalVer policy details.
 
 ---
 
@@ -24,7 +29,8 @@
 
 This monorepo contains the foundational packages for the **Expressive Tea** framework ecosystem. These packages provide core utilities, metadata management, and plugin architecture capabilities used by `@expressive-tea/core` and other Expressive Tea projects.
 
-**Current Version:** `2.0.0` (Major modernization release)
+**Current Version:** `2026.1.0` (CalVer format: `YYYY.MM.MICRO`)  
+**Versioning Scheme:** Calendar Versioning (CalVer) - independent from Core's SemVer
 
 ## Packages
 

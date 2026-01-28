@@ -1,6 +1,6 @@
 {
   "name": "@expressive-tea/commons",
-  "version": "2.0.0",
+  "version": "2026.1.0",
   "description": "Core utilities and shared types for Expressive Tea framework",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

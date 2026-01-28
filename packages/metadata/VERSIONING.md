@@ -1,5 +1,7 @@
 # Versioning Policy
 
+> **Note:** This document is specific to `@expressive-tea/metadata`. For the complete versioning policy that applies to **all packages** in this monorepo, see [Root VERSIONING.md](../../VERSIONING.md).
+
 ## @expressive-tea/metadata
 
 This document describes the versioning scheme used by `@expressive-tea/metadata`.
