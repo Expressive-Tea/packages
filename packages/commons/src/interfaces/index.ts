@@ -120,7 +120,7 @@ export interface ExpressiveTeaStaticFileServer {
   maxAge?: string;
   redirect?: boolean;
 
-  setHeaders?(res, path, stat);
+  setHeaders?(res: any, path: any, stat: any): void;
 }
 
 export interface ExpressiveTeaStatic {
@@ -147,7 +147,7 @@ export interface ExpressiveTeaArgumentOptions {
   key: string | symbol;
   index: number;
   type: symbol;
-  arguments?: string | string [];
+  arguments?: string | string[];
 }
 
 export interface ExpressiveTeaAnnotations {

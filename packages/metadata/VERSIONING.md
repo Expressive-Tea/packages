@@ -40,11 +40,11 @@ This document describes the versioning scheme used by `@expressive-tea/metadata`
 
 ### Components
 
-| Component | Range | Description | Example |
-|-----------|-------|-------------|---------|
-| **YYYY** | 2026+ | Four-digit year of release | `2026` |
-| **MM** | 1-12 | Month of release (not zero-padded) | `1` (January), `12` (December) |
-| **MICRO** | 0+ | Incremental release number for that month | `0`, `1`, `2`, ... |
+| Component | Range | Description                               | Example                        |
+| --------- | ----- | ----------------------------------------- | ------------------------------ |
+| **YYYY**  | 2026+ | Four-digit year of release                | `2026`                         |
+| **MM**    | 1-12  | Month of release (not zero-padded)        | `1` (January), `12` (December) |
+| **MICRO** | 0+    | Incremental release number for that month | `0`, `1`, `2`, ...             |
 
 ### Examples
 
@@ -69,12 +69,14 @@ This document describes the versioning scheme used by `@expressive-tea/metadata`
 **Resets:** MM and MICRO to `.1.0` (first release of the year)
 
 **Example:**
+
 ```
 2026.12.5  → Last release of 2026
 2027.1.0   → First release of 2027
 ```
 
 **Notes:**
+
 - Year bumps **DO NOT** imply breaking changes
 - Breaking changes can happen at any version
 - Users should always read the CHANGELOG before upgrading
@@ -88,12 +90,14 @@ This document describes the versioning scheme used by `@expressive-tea/metadata`
 **Resets:** MICRO to `0`
 
 **Example:**
+
 ```
 2026.1.5   → Last release of January 2026
 2026.2.0   → First release of February 2026
 ```
 
 **Notes:**
+
 - Month bumps indicate a new release period
 - May contain new features, improvements, or bug fixes
 - Check the CHANGELOG for specifics
@@ -105,6 +109,7 @@ This document describes the versioning scheme used by `@expressive-tea/metadata`
 **Bumped:** For each release within the same month
 
 **Triggers:**
+
 - ✅ Bug fixes
 - ✅ New features
 - ✅ Performance improvements
@@ -112,6 +117,7 @@ This document describes the versioning scheme used by `@expressive-tea/metadata`
 - ✅ Breaking changes (with clear CHANGELOG notes)
 
 **Example:**
+
 ```
 2026.1.0   → Initial January release
 2026.1.1   → Bug fix: Memory leak in CacheInMetadata
@@ -120,6 +126,7 @@ This document describes the versioning scheme used by `@expressive-tea/metadata`
 ```
 
 **Notes:**
+
 - MICRO increments for **any** change that warrants a new npm release
 - Always read the CHANGELOG to understand what changed
 
@@ -144,6 +151,7 @@ Unlike SemVer, CalVer doesn't have a dedicated component for breaking changes. I
 ```
 
 **CHANGELOG entry:**
+
 ```markdown
 ## [2026.6.0] - 2026-06-15
 
@@ -215,13 +223,13 @@ Unlike SemVer, CalVer doesn't have a dedicated component for breaking changes. I
 
 ### Version Range Examples
 
-| Range | Matches | Use Case |
-|-------|---------|----------|
-| `^2026.1.0` | `2026.1.x`, `2026.2.x`, ..., `2026.12.x` | Auto-update within year (risky) |
-| `~2026.1.0` | `2026.1.x` only | Auto-update within month (safer) |
-| `2026.1.0` | `2026.1.0` only | No auto-updates (safest) |
-| `>= 2026.1.0 < 2027.0.0` | Same as `^2026.1.0` | Explicit caret range |
-| `>= 2026.1.0 < 2026.2.0` | Same as `~2026.1.0` | Explicit tilde range |
+| Range                    | Matches                                  | Use Case                         |
+| ------------------------ | ---------------------------------------- | -------------------------------- |
+| `^2026.1.0`              | `2026.1.x`, `2026.2.x`, ..., `2026.12.x` | Auto-update within year (risky)  |
+| `~2026.1.0`              | `2026.1.x` only                          | Auto-update within month (safer) |
+| `2026.1.0`               | `2026.1.0` only                          | No auto-updates (safest)         |
+| `>= 2026.1.0 < 2027.0.0` | Same as `^2026.1.0`                      | Explicit caret range             |
+| `>= 2026.1.0 < 2026.2.0` | Same as `~2026.1.0`                      | Explicit tilde range             |
 
 ---
 
@@ -265,6 +273,7 @@ Unlike SemVer, CalVer doesn't have a dedicated component for breaking changes. I
 ### Q: What version range should I use in package.json?
 
 **A:**
+
 - **Libraries:** Use exact version `2026.1.0` for predictability
 - **Applications:** Use tilde `~2026.1.0` for safe bug fixes
 - **Monorepos:** Use exact versions with centralized dependency management
@@ -286,11 +295,13 @@ Unlike SemVer, CalVer doesn't have a dedicated component for breaking changes. I
 ### Q: Will old versions be supported?
 
 **A: Yes, with limitations:**
+
 - **Current year:** Full support (bug fixes, security patches)
 - **Previous year:** Security patches only
 - **Older versions:** No support (upgrade recommended)
 
 Example (if today is 2027):
+
 - `2027.x.x` - Full support ✅
 - `2026.x.x` - Security patches only ⚠️
 - `2025.x.x` and older - No support ❌
@@ -323,14 +334,17 @@ Every release includes:
 ## [2026.2.0] - 2026-02-10
 
 ### ✨ New Features
+
 - Added `@Validate` decorator for runtime validation (#42)
 - Added `Metadata.merge()` method for combining metadata objects
 
 ### 🐛 Bug Fixes
+
 - Fixed type inference issue in `@Meta` decorator (#38)
 - Fixed memory leak in `@CacheInMetadata` (#40)
 
 ### 📚 Documentation
+
 - Added validation examples to README
 - Updated API reference for new methods
 ```
@@ -344,6 +358,7 @@ If you were using `@expressive-tea/metadata@2.0.0` (SemVer), here's how to migra
 ### Update package.json
 
 **Before:**
+
 ```json
 {
   "dependencies": {
@@ -353,6 +368,7 @@ If you were using `@expressive-tea/metadata@2.0.0` (SemVer), here's how to migra
 ```
 
 **After:**
+
 ```json
 {
   "dependencies": {
@@ -388,7 +404,7 @@ If you have version checks in CI/CD, update regex patterns:
 
 Questions about versioning? Open an issue or contact:
 
-- **Email:** project@zero-oneit.com
+- **Email:** projects@expressive-tea.io
 - **GitHub:** [@Expressive-Tea](https://github.com/Expressive-Tea)
 - **Issues:** [Create an issue](https://github.com/Expressive-Tea/packages/issues/new)
 
