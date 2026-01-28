@@ -50,22 +50,22 @@ Have an idea for a new feature?
 
 For private inquiries that don't fit public channels:
 
-- **General support**: project@zero-oneit.com
+- **General support**: support@expressive-tea.io
 - **Security issues**: security@expressive-tea.io (see [Security Policy](SECURITY.md))
-- **Business inquiries**: projects@zero-oneit.com
+- **Business inquiries**: projects@expressive-tea.io
 
 ## ⏱️ Response Times
 
 We strive to respond as quickly as possible:
 
-| Type | Expected Response Time |
-|------|------------------------|
-| 🔒 Critical security issues | 24-48 hours |
-| 🐛 Bug reports | 3-5 business days |
-| ✨ Feature requests | 1-2 weeks |
-| ❓ General questions | Best effort |
+| Type                        | Expected Response Time |
+| --------------------------- | ---------------------- |
+| 🔒 Critical security issues | 24-48 hours            |
+| 🐛 Bug reports              | 3-5 business days      |
+| ✨ Feature requests         | 1-2 weeks              |
+| ❓ General questions        | Best effort            |
 
-*Note: These are community-maintained packages. Response times may vary based on maintainer availability.*
+_Note: These are community-maintained packages. Response times may vary based on maintainer availability._
 
 ## 🤝 Contributing
 
@@ -80,12 +80,14 @@ Want to help improve Expressive Tea?
 ### @expressive-tea/commons
 
 For metadata utilities and shared types:
+
 - Check the [JSDoc documentation](../packages/commons/src/classes/Metadata.ts)
 - See examples in the [test files](../packages/commons/src/__test__/)
 
 ### @expressive-tea/plugin
 
 For plugin development:
+
 - Read the [Plugin class documentation](../packages/plugin/src/classes/Plugin.ts)
 - Learn about [boot stages](../packages/plugin/src/constants.ts)
 - Review [example plugins](../packages/plugin/src/__test__/)
@@ -95,18 +97,22 @@ For plugin development:
 ### Common Issues
 
 **TypeScript errors with decorators**
+
 - Ensure `experimentalDecorators` and `emitDecoratorMetadata` are enabled in `tsconfig.json`
 - Import `reflect-metadata` at the top of your entry file
 
 **Module not found errors**
+
 - Run `yarn install` or `npm install`
 - Check that package versions are compatible (Node.js >= 18, TypeScript >= 5)
 
 **Build errors**
+
 - Clear node_modules: `rm -rf node_modules && yarn install`
 - Clear build cache: `yarn clean && yarn build`
 
 **Test failures**
+
 - Update Jest and ts-jest to latest versions
 - Ensure `reflect-metadata` is imported in test setup
 
@@ -131,7 +137,7 @@ Thank you for using Expressive Tea! Your feedback and contributions make this pr
 ---
 
 **Quick Links**:
-[Documentation](https://zero-oneit.github.io/expresive-tea/) • 
-[GitHub](https://github.com/Expressive-Tea/packages) • 
-[npm](https://www.npmjs.com/package/@expressive-tea/commons) • 
+[Documentation](https://zero-oneit.github.io/expresive-tea/) •
+[GitHub](https://github.com/Expressive-Tea/packages) •
+[npm](https://www.npmjs.com/package/@expressive-tea/commons) •
 [Gitter](https://gitter.im/Expressive-Tea/expresive-tea)

@@ -36,7 +36,7 @@
     "plugin",
     "monorepo"
   ],
-  "author": "Zero One IT <projects@zero-oneit.com>",
+  "author": "Zero One IT <projects@expressive-tea.io>",
   "license": "Apache-2.0",
   "devDependencies": {
     "@eslint/eslintrc": "3.2.0",

@@ -4,10 +4,10 @@
 
 We actively support the following versions with security updates:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 2.0.x   | ✅ Yes             |
-| < 2.0   | ❌ No              |
+| Version | Supported |
+| ------- | --------- |
+| 2.0.x   | ✅ Yes    |
+| < 2.0   | ❌ No     |
 
 ## Reporting a Vulnerability
 
@@ -19,7 +19,7 @@ We take security seriously and appreciate your efforts to responsibly disclose y
 
 Please report security vulnerabilities via email to:
 
-**📧 security@expressive-tea.io** or **project@zero-oneit.com**
+**📧 security@expressive-tea.io** or **support@expressive-tea.io**
 
 ### What to Include
 
@@ -97,7 +97,7 @@ We will:
 ## Contact
 
 - **Security issues**: security@expressive-tea.io
-- **General questions**: project@zero-oneit.com
+- **General questions**: support@expressive-tea.io
 - **GitHub Issues**: [Report a bug](https://github.com/Expressive-Tea/packages/issues/new/choose)
 
 ---

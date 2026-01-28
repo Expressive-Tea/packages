@@ -200,7 +200,9 @@ Gets the design-time type of a property or method.
 ```typescript
 class User {
   username: string;
-  getUsers(): User[] { return []; }
+  getUsers(): User[] {
+    return [];
+  }
 }
 
 const propType = Metadata.getType(User.prototype, 'username');
@@ -217,7 +219,7 @@ Gets the design-time parameter types of a constructor or method.
 ```typescript
 class UserService {
   constructor(repo: UserRepository, logger: Logger) {}
-  
+
   createUser(name: string, age: number): User {
     return new User();
   }
@@ -236,7 +238,9 @@ Gets the design-time return type of a method.
 
 ```typescript
 class UserService {
-  getUser(): User { return new User(); }
+  getUser(): User {
+    return new User();
+  }
 }
 
 const returnType = Metadata.getReturnType(UserService.prototype, 'getUser');
@@ -289,16 +293,16 @@ class UserController {
 Sets multiple metadata key-value pairs at once.
 
 ```typescript
-@Meta({ 
-  controller: true, 
+@Meta({
+  controller: true,
   basePath: '/api/users',
   version: '1.0'
 })
 class UserController {
-  @Meta({ 
-    method: 'GET', 
+  @Meta({
+    method: 'GET',
     path: '/:id',
-    cache: true 
+    cache: true
   })
   getUser() {}
 }
@@ -309,8 +313,8 @@ class UserController {
 Copies metadata from one class to another. Optionally specify which keys to inherit.
 
 ```typescript
-@Meta({ 
-  controller: true, 
+@Meta({
+  controller: true,
   basePath: '/api',
   version: '1.0'
 })
@@ -365,7 +369,7 @@ class UserService {
   findUser(id: string) {
     // Old implementation
   }
-  
+
   getUserById(id: string) {
     // New implementation
   }
@@ -436,7 +440,7 @@ const Post = (path: string) => Meta({ method: 'POST', path });
 class UserController {
   @Get('/')
   getUsers() {}
-  
+
   @Post('/')
   createUser() {}
 }
@@ -463,7 +467,7 @@ class CreateUserDto {
   @MinLength(3)
   @MaxLength(50)
   username: string;
-  
+
   @Required()
   @MinLength(8)
   password: string;
@@ -473,27 +477,27 @@ class CreateUserDto {
 function validate(dto: any): string[] {
   const errors: string[] = [];
   const proto = Object.getPrototypeOf(dto);
-  
+
   for (const key of Object.keys(dto)) {
     const isRequired = Metadata.get<boolean>('validation:required', proto, key);
     const minLength = Metadata.get<number>('validation:minLength', proto, key);
-    
+
     if (isRequired && !dto[key]) {
       errors.push(`${key} is required`);
     }
-    
+
     if (minLength && dto[key]?.length < minLength) {
       errors.push(`${key} must be at least ${minLength} characters`);
     }
   }
-  
+
   return errors;
 }
 
 const user = new CreateUserDto();
 user.username = 'ab'; // Too short
 const errors = validate(user);
-console.log(errors); 
+console.log(errors);
 // ['password is required', 'username must be at least 3 characters']
 ```
 
@@ -503,19 +507,18 @@ console.log(errors);
 import { Meta } from '@expressive-tea/metadata';
 
 const Entity = (tableName: string) => Meta({ entity: true, tableName });
-const Column = (options: { type: string; nullable?: boolean }) => 
-  (target: any, propertyKey: string) => {
-    Meta(options)(target, propertyKey);
-  };
+const Column = (options: { type: string; nullable?: boolean }) => (target: any, propertyKey: string) => {
+  Meta(options)(target, propertyKey);
+};
 
 @Entity('users')
 class User {
   @Column({ type: 'int', nullable: false })
   id: number;
-  
+
   @Column({ type: 'varchar', nullable: false })
   username: string;
-  
+
   @Column({ type: 'varchar', nullable: true })
   email?: string;
 }
@@ -523,14 +526,14 @@ class User {
 // Generate SQL from metadata
 function generateSchema(entityClass: Function): string {
   const tableName = Metadata.get<string>('tableName', entityClass);
-  const props = Object.getOwnPropertyNames(entityClass.prototype).filter(p => p !== 'constructor');
-  
-  const columns = props.map(prop => {
+  const props = Object.getOwnPropertyNames(entityClass.prototype).filter((p) => p !== 'constructor');
+
+  const columns = props.map((prop) => {
     const type = Metadata.get<string>('type', entityClass.prototype, prop);
     const nullable = Metadata.get<boolean>('nullable', entityClass.prototype, prop);
     return `${prop} ${type}${nullable ? '' : ' NOT NULL'}`;
   });
-  
+
   return `CREATE TABLE ${tableName} (\n  ${columns.join(',\n  ')}\n);`;
 }
 
@@ -557,7 +560,7 @@ class UserService {
     private repo: UserRepository,
     private logger: Logger
   ) {}
-  
+
   getUser(id: string): Promise<User> {
     return Promise.resolve(new User());
   }
@@ -634,10 +637,10 @@ if (Metadata.has('config', MyClass)) {
 
 Create well-documented decorator factories:
 
-```typescript
+````typescript
 /**
  * Marks a class as a controller with a base path.
- * 
+ *
  * @param basePath - The base path for all routes in this controller
  * @example
  * ```typescript
@@ -646,12 +649,12 @@ Create well-documented decorator factories:
  * ```
  */
 function Controller(basePath: string) {
-  return Meta({ 
-    controller: true, 
-    basePath 
+  return Meta({
+    controller: true,
+    basePath
   });
 }
-```
+````
 
 ### 5. Use Inheritance Carefully
 
@@ -719,7 +722,7 @@ Since `@expressive-tea/metadata` is framework-agnostic and independent of Expres
 ```json
 {
   "dependencies": {
-    "@expressive-tea/metadata": "~2026.1.0"  // Recommended: updates within same month
+    "@expressive-tea/metadata": "~2026.1.0" // Recommended: updates within same month
   }
 }
 ```
@@ -741,7 +744,7 @@ Apache-2.0 © [Zero One IT](https://github.com/Expressive-Tea)
 - 📖 [Documentation](https://github.com/Expressive-Tea/packages)
 - 🐛 [Issue Tracker](https://github.com/Expressive-Tea/packages/issues)
 - 💬 [Discussions](https://github.com/Expressive-Tea/packages/discussions)
-- 📧 Email: project@zero-oneit.com
+- 📧 Email: support@expressive-tea.io
 
 ---
 

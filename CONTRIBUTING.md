@@ -17,7 +17,7 @@ This document provides guidelines for contributing to the `@expressive-tea/commo
 
 ## Code of Conduct
 
-This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to project@zero-oneit.com.
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to support@expressive-tea.io.
 
 ## Getting Started
 
@@ -102,6 +102,7 @@ git checkout -b fix/my-bug-fix
 ```
 
 Branch naming conventions:
+
 - `feature/` - New features
 - `fix/` - Bug fixes
 - `docs/` - Documentation updates
@@ -130,6 +131,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 ```
 
 **Types**:
+
 - `feat:` - New feature
 - `fix:` - Bug fix
 - `docs:` - Documentation changes
@@ -139,6 +141,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 - `chore:` - Build/tooling changes
 
 **Examples**:
+
 ```bash
 feat(plugin): add support for async stage methods
 
@@ -225,6 +228,7 @@ npx tsc --noEmit -p packages/plugin
 ### Create a Pull Request
 
 1. **Push your branch** to your fork
+
    ```bash
    git push origin feature/my-new-feature
    ```
@@ -275,16 +279,16 @@ npx tsc --noEmit -p packages/plugin
 
 **Example**:
 
-```typescript
+````typescript
 /**
  * Store metadata on a class or property
- * 
+ *
  * @param key - Metadata key identifier
  * @param value - Value to store
  * @param target - Target class constructor
  * @param propertyKey - Optional property name
  * @since 2.0.0
- * 
+ *
  * @example
  * ```typescript
  * Metadata.set('my-key', 'value', MyClass);
@@ -293,7 +297,7 @@ npx tsc --noEmit -p packages/plugin
 static set(key: string, value: any, target: any, propertyKey?: string): void {
   // ...
 }
-```
+````
 
 ### File Naming
 
@@ -341,11 +345,12 @@ packages/
 
 - 💬 [Gitter Chat](https://gitter.im/Expressive-Tea/expresive-tea)
 - 💡 [GitHub Discussions](https://github.com/Expressive-Tea/packages/discussions)
-- 📧 Email: project@zero-oneit.com
+- 📧 Email: support@expressive-tea.io
 
 ## Recognition
 
 Contributors are recognized in:
+
 - Project README
 - Release notes
 - GitHub contributors page

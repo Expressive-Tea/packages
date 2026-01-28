@@ -22,13 +22,13 @@
   },
   "bugs": {
     "url": "https://github.com/Expressive-Tea/packages/issues",
-    "email": "project@zero-oneit.com"
+    "email": "support@expressive-tea.io"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "contributors": [
-    "Diego Resendez <diego.resendez@zero-oneit.com> (https://github.com/chrnx-dev)"
+    "Diego Resendez <diego.resendez@expressive-tea.io> (https://github.com/chrnx-dev)"
   ],
   "keywords": [
     "expressive-tea",
@@ -37,7 +37,7 @@
     "decorators",
     "metadata"
   ],
-  "author": "Zero One IT <projects@zero-oneit.com>",
+  "author": "Zero One IT <projects@expressive-tea.io>",
   "license": "Apache-2.0",
   "dependencies": {
     "@expressive-tea/metadata": "^2026.1.0",
