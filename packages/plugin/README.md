@@ -18,7 +18,7 @@
 > - ✅ **Compatible**: `@expressive-tea/core@2.x.x` and above
 > - ❌ **Not compatible**: `@expressive-tea/core@1.x.x` or below
 > 
-> Using Expressive Tea Core v1.x? You'll need `@expressive-tea/plugin@1.x.x` (SemVer) instead.
+> Using Expressive Tea Core v1.x? You'll need `@expressive-tea/plugin@1.0.3` (last SemVer version for Core v1.x).
 > 
 > **📦 Expressive Tea Core Reference**: This package is designed to work with [Expressive Tea Core](https://github.com/Expressive-Tea/expresive-tea) - the main framework.
 

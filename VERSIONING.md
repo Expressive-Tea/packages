@@ -267,9 +267,11 @@ Unlike SemVer, CalVer doesn't have a dedicated component for breaking changes. I
 
 | Core Version | Compatible Package Versions | Notes |
 |--------------|---------------------------|-------|
-| `@expressive-tea/core@2.x.x` | `@expressive-tea/*@2026.x.x` | ✅ Fully compatible |
-| `@expressive-tea/core@1.x.x` | `@expressive-tea/*@1.x.x` (SemVer) | ❌ Use old 1.x package versions |
+| `@expressive-tea/core@2.x.x` | `@expressive-tea/*@2026.x.x` (CalVer) | ✅ Fully compatible |
+| `@expressive-tea/core@1.x.x` | `@expressive-tea/commons@1.0.1`<br>`@expressive-tea/plugin@1.0.3` | ❌ Legacy SemVer versions (deprecated) |
 | `@expressive-tea/core@3.x.x` | TBD (future) | Future compatibility |
+
+**Note:** `@expressive-tea/metadata` did not exist for Core v1.x (it was part of commons).
 
 ### Peer Dependency Declaration
 
@@ -406,11 +408,17 @@ Core is declared as an **optional peer dependency**.
 
 **A: Limited support:**
 
-- **SemVer 2.0.0** was the last SemVer release
+- **SemVer 2.0.0** was the last SemVer release for Core v2.x
 - **CalVer 2026.1.0** is the CalVer migration version
-- Old `1.x.x` versions are deprecated (for Core v1 only)
+- **Legacy versions** for Core v1.x:
+  - `@expressive-tea/commons@1.0.1` (deprecated, Core v1.x only)
+  - `@expressive-tea/plugin@1.0.3` (deprecated, Core v1.x only)
 
-**Migration path:** `2.0.0` → `2026.1.0` (no API changes, only version format)
+**Migration path:** 
+- Core v1.x → Core v2.x: Upgrade core, then use CalVer packages
+- SemVer `2.0.0` → CalVer `2026.1.0`: No API changes, only version format
+
+**Support:** Legacy 1.x versions receive no updates. Upgrade to Core v2.x and CalVer packages.
 
 ---
 
@@ -563,6 +571,25 @@ yarn install
 ```javascript
 /^\d{4}\.\d{1,2}\.\d+$/  // Matches 2026.1.0
 ```
+
+---
+
+### Legacy Versions (Core v1.x)
+
+If you're using `@expressive-tea/core@1.x.x`, you must use the legacy SemVer package versions:
+
+| Package | Last SemVer Version | Status |
+|---------|---------------------|--------|
+| `@expressive-tea/commons` | `1.0.1` | ❌ Deprecated (Core v1.x only) |
+| `@expressive-tea/plugin` | `1.0.3` | ❌ Deprecated (Core v1.x only) |
+| `@expressive-tea/metadata` | N/A | Did not exist (was part of commons) |
+
+**Installation for Core v1.x:**
+```bash
+npm install @expressive-tea/commons@1.0.1 @expressive-tea/plugin@1.0.3
+```
+
+**Recommendation:** Upgrade to `@expressive-tea/core@2.x.x` and use CalVer packages (`2026.x.x`).
 
 ---
 

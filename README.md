@@ -19,7 +19,10 @@
 > - ✅ **Compatible with**: [@expressive-tea/core](https://github.com/Expressive-Tea/expresive-tea) v2.x.x and above
 > - ❌ **Not compatible with**: @expressive-tea/core v1.x.x or below
 > 
-> If you're using Expressive Tea Core v1.x, please use the 1.x (SemVer) versions of these packages.
+> **For Core v1.x users:**
+> - Use `@expressive-tea/commons@1.0.1` (last SemVer version for Core v1.x)
+> - Use `@expressive-tea/plugin@1.0.3` (last SemVer version for Core v1.x)
+> - Note: `@expressive-tea/metadata` did not exist for Core v1.x
 > 
 > **📖 Versioning:** See [VERSIONING.md](./VERSIONING.md) for complete CalVer policy details.
 
