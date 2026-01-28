@@ -1,29 +1,54 @@
 {
   "name": "@expressive-tea/commons",
-  "version": "0.0.1",
-  "description": "Commons for Expressive Tea Framework.",
+  "version": "2026.1.0",
+  "description": "Core utilities and shared types for Expressive Tea framework",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:clear": "jest --clearCache",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts"
+  },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/zero-oneit/open-source/expressive-tea.git"
+    "url": "https://github.com/Expressive-Tea/packages.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/zero-oneit/open-source/expressive-tea/issues",
-    "email": "project@zero-oneit.com"
+    "url": "https://github.com/Expressive-Tea/packages/issues",
+    "email": "support@expressive-tea.io"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "contributors": [
-    "Diego Resendez <diego.resendez@zero-oneit.com> (https://github.com/zerooneit)"
+    "Diego Resendez <diego.resendez@expressive-tea.io> (https://github.com/chrnx-dev)"
   ],
   "keywords": [
-    "Expressive-Tea",
+    "expressive-tea",
     "commons",
     "typescript",
-    "decorators"
+    "decorators",
+    "metadata"
   ],
-  "author": "Zero One IT <projects@zero-oneit.com>",
+  "author": "Zero One IT <projects@expressive-tea.io>",
   "license": "Apache-2.0",
   "dependencies": {
-    "reflect-metadata": "^0.1.13"
+    "@expressive-tea/metadata": "^2026.1.0",
+    "reflect-metadata": "^0.2.0"
   },
-  "devDependencies": {
+  "peerDependencies": {
+    "@expressive-tea/core": ">=2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@expressive-tea/core": {
+      "optional": true
+    }
   }
 }

@@ -1,0 +1,17 @@
+# source
+src/
+tsconfig.json
+
+# tests
+**/__test__/
+*.spec.ts
+*.test.ts
+
+# config
+.prettierrc
+tslint.json
+
+# misc
+*.log
+.DS_Store
+banner.png

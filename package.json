@@ -1,45 +1,63 @@
 {
-  "name": "expressive-tea",
-  "version": "1.0.0",
-  "description": "Expressive Tea: A Microframework to relax and take it easy.",
-  "main": "gulpfile.js",
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "@types/gulp": "^4.0.6",
-    "@types/node": "^12.11.1",
-    "@types/reflect-metadata": "^0.1.0",
-    "@types/express": "^4.17.1",
-    "@types/lodash": "^4.14.144",
-    "fancy-log": "^1.3.3",
-    "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-typescript": "^5.0.1",
-    "ts-node": "^8.4.1",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.4"
+  "name": "@expressive-tea/packages",
+  "version": "2.0.0",
+  "description": "Expressive Tea: Packages monorepo for commons and plugin utilities",
+  "private": true,
+  "packageManager": "yarn@4.11.0",
+  "workspaces": {
+    "packages": [
+      "packages/commons",
+      "packages/metadata",
+      "packages/plugin"
+    ]
   },
   "scripts": {
-    "clean": "gulp clean:dist",
-    "build": "npm run clean && gulp build",
-    "publish": "npm run clean"
+    "clean": "yarn workspaces foreach -A run clean",
+    "build": "yarn workspaces foreach -A run build",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:clear": "jest --clearCache",
+    "lint": "eslint packages/*/src/**/*.ts",
+    "lint:fix": "eslint --fix packages/*/src/**/*.ts",
+    "format": "prettier --write \"packages/*/src/**/*.ts\"",
+    "format:check": "prettier --check \"packages/*/src/**/*.ts\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:zero-oneit/open-source/expressive-tea.git"
+    "url": "https://github.com/Expressive-Tea/packages.git"
   },
   "keywords": [
-    "Expressive",
-    "Tea",
-    "REST",
-    "Decorators",
-    "Plugin",
-    "Typescript",
-    "Restful",
-    "Packages"
+    "expressive-tea",
+    "typescript",
+    "decorators",
+    "plugin",
+    "monorepo"
   ],
-  "author": "Zero One IT Desarrollos <project@zero-oneit.com>",
-  "license": "Apache-2.0"
+  "author": "Zero One IT <projects@expressive-tea.io>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@eslint/eslintrc": "3.2.0",
+    "@eslint/js": "9.39.1",
+    "@types/express": "^4.17.21",
+    "@types/jest": "29.5.14",
+    "@types/node": "^20.19.24",
+    "@types/reflect-metadata": "^0.1.0",
+    "@typescript-eslint/eslint-plugin": "8.46.4",
+    "@typescript-eslint/parser": "8.46.4",
+    "eslint": "9.39.1",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsdoc": "61.2.1",
+    "eslint-plugin-prefer-arrow": "1.2.3",
+    "eslint-plugin-promise": "7.2.1",
+    "globals": "16.5.0",
+    "jest": "30.2.0",
+    "jest-junit": "16.0.0",
+    "prettier": "^3.8.1",
+    "ts-jest": "29.4.5",
+    "typescript": "^5.9.3"
+  }
 }
