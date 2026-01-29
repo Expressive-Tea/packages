@@ -1,7 +1,7 @@
-import { Plugin } from '../../classes/Plugin';
-import { BOOT_STAGES } from '../../constants';
-import { DependencyNotFound } from '../../exceptions/dependency';
-import { Stage } from '../../decorators/stage';
+import { Plugin } from '@classes/Plugin';
+import { BOOT_STAGES } from '@constants';
+import { DependencyNotFound } from '@exceptions/dependency';
+import { Stage } from '@decorators/stage';
 
 describe('Plugin', () => {
   class TestPlugin extends Plugin {

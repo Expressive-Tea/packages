@@ -17,5 +17,15 @@ module.exports = {
     '^.+\\.ts$': ['ts-jest', {
       tsconfig: 'tsconfig.spec.json'
     }]
+  },
+  moduleNameMapper: {
+    '^@classes$': '<rootDir>/src/classes',
+    '^@classes/(.*)$': '<rootDir>/src/classes/$1',
+    '^@decorators$': '<rootDir>/src/decorators',
+    '^@decorators/(.*)$': '<rootDir>/src/decorators/$1',
+    '^@helpers$': '<rootDir>/src/helpers',
+    '^@helpers/(.*)$': '<rootDir>/src/helpers/$1',
+    '^@types$': '<rootDir>/src/types',
+    '^@types/(.*)$': '<rootDir>/src/types/$1'
   }
 };

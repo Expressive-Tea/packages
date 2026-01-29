@@ -3,7 +3,13 @@
   "compilerOptions": {
     "strict": false,
     "noImplicitAny": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "paths": {
+      "@interfaces": ["src/interfaces"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@types": ["src/types"],
+      "@types/*": ["src/types/*"]
+    }
   },
   "include": ["src/__test__/**/*"]
 }

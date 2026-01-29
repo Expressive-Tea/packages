@@ -117,22 +117,29 @@ export abstract class Plugin {
    * Get methods registered for a specific boot stage
    * 
    * Returns an array of methods decorated with the @Stage decorator
-   * for the specified boot stage.
+   * for the specified boot stage. Methods are automatically bound to
+   * this plugin instance to preserve the correct 'this' context.
    * 
    * @param stage - The boot stage to query
-   * @returns Array of stage items with method references
+   * @returns Array of stage items with method references bound to this instance
    * @memberof Plugin
    * @since 2.0.0
    * 
    * @example
    * ```typescript
    * const appStageMethods = plugin.getRegisteredStage(BOOT_STAGES.APPLICATION);
-   * appStageMethods.forEach(item => item.method.call(plugin));
+   * appStageMethods.forEach(item => item.method());
    * ```
    */
   getRegisteredStage(stage: BOOT_STAGES) {
     const stages = getStages(this);
-    return stages[stage] || [];
+    const stageItems = stages[stage] || [];
+    
+    // Bind each method to this instance to preserve 'this' context
+    return stageItems.map((item: any) => ({
+      ...item,
+      method: item.method.bind(this)
+    }));
   }
 
   /**

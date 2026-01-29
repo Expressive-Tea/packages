@@ -16,5 +16,23 @@ module.exports = {
         tsconfig: '<rootDir>/tsconfig.spec.json'
       }
     ]
+  },
+  moduleNameMapper: {
+    '^@classes$': '<rootDir>/src/classes',
+    '^@classes/(.*)$': '<rootDir>/src/classes/$1',
+    '^@decorators$': '<rootDir>/src/decorators',
+    '^@decorators/(.*)$': '<rootDir>/src/decorators/$1',
+    '^@exceptions$': '<rootDir>/src/exceptions',
+    '^@exceptions/(.*)$': '<rootDir>/src/exceptions/$1',
+    '^@helpers$': '<rootDir>/src/helpers',
+    '^@helpers/(.*)$': '<rootDir>/src/helpers/$1',
+    '^@interfaces$': '<rootDir>/src/interfaces',
+    '^@interfaces/(.*)$': '<rootDir>/src/interfaces/$1',
+    '^@types$': '<rootDir>/src/types',
+    '^@types/(.*)$': '<rootDir>/src/types/$1',
+    '^@libs$': '<rootDir>/src/libs',
+    '^@libs/(.*)$': '<rootDir>/src/libs/$1',
+    '^@constants$': '<rootDir>/src/constants',
+    '^@constants/(.*)$': '<rootDir>/src/constants/$1'
   }
 };

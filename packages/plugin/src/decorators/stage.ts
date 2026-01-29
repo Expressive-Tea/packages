@@ -9,8 +9,8 @@
  * @since 2.0.0
  */
 
-import { BOOT_STAGES } from '../constants';
-import { getClass, getStage, setStage } from '../helpers';
+import { BOOT_STAGES } from '@constants';
+import { getClass, getStage, setStage } from '@helpers';
 
 /**
  * Stage method decorator
@@ -57,8 +57,11 @@ export function Stage(
 ): (target: any, propertyKey: any, descriptor: any) => void {
   return (target: any, propertyKey: any, descriptor: any) => {
     const selectedStage = getStage(stage, target);
+    const originalMethod = descriptor.value;
+    
     const item = {
-      method: descriptor.value,
+      method: originalMethod,
+      propertyKey, // Store the property key to allow late binding
       name: [getClass(target).name, propertyKey].join(':'),
       required
     };

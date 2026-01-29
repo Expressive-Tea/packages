@@ -3,7 +3,25 @@
   "compilerOptions": {
     "strict": false,
     "noImplicitAny": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "paths": {
+      "@classes": ["src/classes"],
+      "@classes/*": ["src/classes/*"],
+      "@decorators": ["src/decorators"],
+      "@decorators/*": ["src/decorators/*"],
+      "@exceptions": ["src/exceptions"],
+      "@exceptions/*": ["src/exceptions/*"],
+      "@helpers": ["src/helpers"],
+      "@helpers/*": ["src/helpers/*"],
+      "@interfaces": ["src/interfaces"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@types": ["src/types"],
+      "@types/*": ["src/types/*"],
+      "@libs": ["src/libs"],
+      "@libs/*": ["src/libs/*"],
+      "@constants": ["src/constants"],
+      "@constants/*": ["src/constants/*"]
+    }
   },
   "include": ["src/__test__/**/*"]
 }

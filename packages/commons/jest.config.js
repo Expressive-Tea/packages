@@ -16,5 +16,11 @@ module.exports = {
         tsconfig: '<rootDir>/tsconfig.spec.json'
       }
     ]
+  },
+  moduleNameMapper: {
+    '^@interfaces$': '<rootDir>/src/interfaces',
+    '^@interfaces/(.*)$': '<rootDir>/src/interfaces/$1',
+    '^@types$': '<rootDir>/src/types',
+    '^@types/(.*)$': '<rootDir>/src/types/$1'
   }
 };

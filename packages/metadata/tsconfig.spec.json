@@ -1,8 +1,19 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src"
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "paths": {
+      "@classes": ["src/classes"],
+      "@classes/*": ["src/classes/*"],
+      "@decorators": ["src/decorators"],
+      "@decorators/*": ["src/decorators/*"],
+      "@helpers": ["src/helpers"],
+      "@helpers/*": ["src/helpers/*"],
+      "@types": ["src/types"],
+      "@types/*": ["src/types/*"]
+    }
   },
-  "include": ["src/**/*"]
+  "include": ["src/__test__/**/*"]
 }

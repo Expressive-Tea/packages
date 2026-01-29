@@ -1,6 +1,7 @@
-import { Stage } from '../../decorators/stage';
-import { BOOT_STAGES } from '../../constants';
-import { getStage } from '../../helpers/object-helper';
+import { Stage } from '@decorators/stage';
+import { BOOT_STAGES } from '@constants';
+import { getStage } from '@helpers/object-helper';
+import { Plugin } from '@classes/Plugin';
 
 describe('Stage Decorator', () => {
   it('should register a method to a boot stage', () => {
@@ -124,5 +125,95 @@ describe('Stage Decorator', () => {
     expect(applicationStage).toHaveLength(1);
     expect(bootDepsStage).toHaveLength(1);
     expect(startStage).toHaveLength(1);
+  });
+
+  it('should preserve class "this" context when method is called', () => {
+    class TestPlugin {
+      private message: string = 'Hello from plugin';
+
+      getMessage() {
+        return this.message;
+      }
+
+      @Stage(BOOT_STAGES.APPLICATION)
+      onApplication() {
+        return this.getMessage();
+      }
+    }
+
+    const plugin = new TestPlugin();
+    const applicationStage = getStage(BOOT_STAGES.APPLICATION, plugin);
+
+    // Call the method directly from the stage metadata with explicit binding
+    const result = applicationStage[0].method.call(plugin);
+    expect(result).toBe('Hello from plugin');
+  });
+
+  it('should allow methods to access class properties via "this"', () => {
+    class TestPlugin {
+      private counter: number = 0;
+
+      @Stage(BOOT_STAGES.APPLICATION)
+      incrementCounter() {
+        this.counter++;
+        return this.counter;
+      }
+    }
+
+    const plugin = new TestPlugin();
+    const applicationStage = getStage(BOOT_STAGES.APPLICATION, plugin);
+
+    // Call the method and verify it can modify instance state
+    const result1 = applicationStage[0].method.call(plugin);
+    expect(result1).toBe(1);
+    expect(plugin['counter']).toBe(1);
+
+    const result2 = applicationStage[0].method.call(plugin);
+    expect(result2).toBe(2);
+    expect(plugin['counter']).toBe(2);
+  });
+
+  it('should bind methods automatically when retrieved from Plugin.getRegisteredStage', () => {
+    class TestPlugin extends Plugin {
+      private value: string = 'test-value';
+
+      getValue() {
+        return this.value;
+      }
+
+      @Stage(BOOT_STAGES.APPLICATION)
+      onApplication() {
+        return this.getValue();
+      }
+    }
+
+    const plugin = new TestPlugin();
+    const appStages = plugin.getRegisteredStage(BOOT_STAGES.APPLICATION);
+
+    // Method should work without explicit .call() or .bind()
+    const result = appStages[0].method();
+    expect(result).toBe('test-value');
+  });
+
+  it('should preserve "this" context when methods are called without binding', () => {
+    class TestPlugin extends Plugin {
+      private counter: number = 0;
+
+      @Stage(BOOT_STAGES.APPLICATION)
+      increment() {
+        this.counter++;
+        return this.counter;
+      }
+    }
+
+    const plugin = new TestPlugin();
+    const appStages = plugin.getRegisteredStage(BOOT_STAGES.APPLICATION);
+
+    // Extract method reference and call it directly (simulating framework behavior)
+    const { method } = appStages[0];
+    
+    expect(method()).toBe(1);
+    expect(method()).toBe(2);
+    expect(plugin['counter']).toBe(2);
   });
 });

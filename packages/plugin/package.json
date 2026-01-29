@@ -40,8 +40,8 @@
   "author": "Zero One IT <projects@expressive-tea.io>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@expressive-tea/metadata": "^2026.1.0",
-    "reflect-metadata": "^0.2.0"
+    "@expressive-tea/metadata": "~2026.1.0",
+    "reflect-metadata": "~0.2.0"
   },
   "peerDependencies": {
     "@expressive-tea/core": ">=2.0.0"
