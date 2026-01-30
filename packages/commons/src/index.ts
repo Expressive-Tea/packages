@@ -20,8 +20,12 @@ export {
   InheritMetadata, 
   CacheInMetadata, 
   Deprecated,
-  getClass 
+  getClass,
+  nameOfClass,
+  isAsyncFunction,
+  getOwnArgumentNames
 } from '@expressive-tea/metadata';
 
 export * from './interfaces';
 export * from './types';
+export * from './constants';

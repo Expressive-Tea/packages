@@ -9,8 +9,8 @@
  * @since 2.0.0
  */
 
-import { BOOT_STAGES } from '@constants';
-import { getClass, getStage, setStage } from '@helpers';
+import { BOOT_STAGES } from '../constants';
+import { getClass, getStage, setStage } from '../helpers/object-helper';
 
 /**
  * Stage method decorator
