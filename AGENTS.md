@@ -112,6 +112,13 @@ Agent safety & git rules (follow CLAUDE.md)
 - Only create commits when the human user explicitly requests a commit. If you
   are asked to commit, produce a concise commit message that focuses on the why.
 
+- DON'T commit to `main` or `develop`. If you are on either branch, create a
+  new feature branch first (e.g. `feature/<short-desc>` or
+  `feature/<JIRA>-short-desc`) and perform work there.
+- DO follow GitFlow: create feature branches off `develop`, use `release/*`
+  branches for preparing releases and `hotfix/*` for urgent fixes, and merge
+  back following the GitFlow process.
+
 Agent behavior rules (when to ask questions)
 
 - Ask only when blocked after reading relevant files and attempting reasonable
@@ -201,6 +208,65 @@ Quick checklist for agents making code changes
 
 If you make non-trivial changes, report back with:
 - files changed (paths), build output/errors, and any lint/type errors.
+
+## Staging registry (Verdaccio)
+
+Use a local Verdaccio instance as a staging npm registry to test publishing without touching the public registry.
+
+- Image: `verdaccio/verdaccio:latest` (official)
+- Container name: `verdaccio-expressive-tea`
+- Default URL: http://localhost:4873
+- Anonymous publishing: enabled (local only)
+- Allow same-version uploads: aim to permit overwrites; see notes below
+- Persistence: not required. It's OK to run without volumes (ephemeral storage).
+
+Quick commands
+
+- Start (Docker):
+  ```bash
+  docker run -d --rm --name verdaccio-expressive-tea -p 4873:4873 verdaccio/verdaccio:latest
+  ```
+
+- Start (Podman):
+  ```bash
+  podman run -d --rm --name verdaccio-expressive-tea -p 4873:4873 docker.io/verdaccio/verdaccio:latest
+  ```
+
+- Check if running (returns container id if up):
+  ```bash
+  docker ps -q -f name=verdaccio-expressive-tea
+  ```
+
+- Publish to local Verdaccio (example):
+  ```bash
+  # point npm to local registry
+  npm set registry http://localhost:4873
+
+  # publish (from package root)
+  npm publish --registry http://localhost:4873
+
+  # restore default registry
+  npm set registry https://registry.npmjs.org/
+  ```
+
+Notes & recommendations
+
+- The repo includes a minimal Verdaccio config under `.docs/verdaccio/config.yaml`. It configures anonymous access and allows publishing. Run the container with that config if you need deterministic behavior:
+
+  ```bash
+  docker run -d --rm --name verdaccio-expressive-tea -p 4873:4873 \
+    -v $(pwd)/.docs/verdaccio/config.yaml:/verdaccio/conf/config.yaml \
+    verdaccio/verdaccio:latest
+  ```
+
+- We prefer anonymous publishing for local staging. Do not expose this registry to the public network.
+- If Verdaccio rejects a same-version publish, you can either:
+  - publish with `npm publish --force --registry http://localhost:4873`, or
+  - delete the package version from Verdaccio UI/storage and re-publish.
+
+- Check container by name (`verdaccio-expressive-tea`) before starting a new one; start only if not running.
+
+Add this staging step to your local publish workflow to validate builds and packages before public publish.
 
 ---
 End of AGENTS guidance for packages/

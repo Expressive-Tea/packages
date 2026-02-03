@@ -5,6 +5,57 @@ All notable changes to the @expressive-tea packages monorepo will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026.1.1] - 2026-02-02
+
+### 🔒 Security & Quality Assurance
+
+This maintenance release focuses on security validation and package configuration improvements to ensure publish readiness for npmjs.org.
+
+### ✨ Added
+
+#### Package Configuration
+- **@expressive-tea/metadata**: Added `exports` field for proper module resolution
+  - Ensures compatibility with modern Node.js module resolution
+  - Matches configuration pattern used in commons and plugin packages
+  - Includes package.json export for tooling compatibility
+
+#### Security & Validation
+- **Comprehensive Security Audit**: All packages audited for vulnerabilities
+  - Zero critical or high-severity vulnerabilities in production dependencies
+  - Moderate deprecation warnings in devDependencies only (no impact on published packages)
+  - Production dependencies verified: reflect-metadata@0.2.2 (latest stable)
+- **Verdaccio Testing**: All packages tested on local registry before publish
+  - Installation validation successful
+  - Dependency chain resolution verified
+  - Import functionality confirmed
+
+### 🔧 Changed
+
+#### Quality Assurance
+- All linting passing (0 errors, 20 acceptable warnings)
+- All tests passing (79 passed, 1 skipped)
+- Build artifacts verified for all three packages
+- Package sizes optimized (metadata: 19.0 kB, commons: 16.2 kB, plugin: 19.8 kB)
+
+### 📝 Documentation
+- Added comprehensive PUBLISH_READINESS_REPORT.md with full audit results
+- Security findings documented
+- Pre-publish checklist completed
+
+### 🔍 Technical Details
+
+**Packages Included:**
+- @expressive-tea/metadata@2026.1.1
+- @expressive-tea/commons@2026.1.1
+- @expressive-tea/plugin@2026.1.1
+
+**Dependency Security:**
+- All production dependencies verified secure
+- reflect-metadata: ^0.2.0 (resolves to 0.2.2 - latest stable)
+- Internal package dependencies properly scoped (~2026.1.1)
+
+---
+
 ## [2.0.0] - 2026-01-28
 
 ### 🎉 Major Release - Complete Modernization
