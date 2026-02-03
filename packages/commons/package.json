@@ -1,9 +1,60 @@
 {
   "name": "@expressive-tea/commons",
-  "version": "2026.1.0",
+  "version": "2026.1.1",
   "description": "Core utilities and shared types for Expressive Tea framework",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./constants": {
+      "types": "./dist/constants.d.ts",
+      "require": "./dist/constants.js",
+      "default": "./dist/constants.js"
+    },
+    "./interfaces": {
+      "types": "./dist/interfaces/index.d.ts",
+      "require": "./dist/interfaces/index.js",
+      "default": "./dist/interfaces/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/types/index.js",
+      "default": "./dist/types/index.js"
+    },
+    "./classes/Metadata": {
+      "types": "./dist/classes/Metadata.d.ts",
+      "require": "./dist/classes/Metadata.js",
+      "default": "./dist/classes/Metadata.js"
+    },
+    "./helpers/object-helper": {
+      "types": "./dist/helpers/object-helper.d.ts",
+      "require": "./dist/helpers/object-helper.js",
+      "default": "./dist/helpers/object-helper.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "constants": [
+        "./dist/constants.d.ts"
+      ],
+      "interfaces": [
+        "./dist/interfaces/index.d.ts"
+      ],
+      "types": [
+        "./dist/types/index.d.ts"
+      ],
+      "classes/Metadata": [
+        "./dist/classes/Metadata.d.ts"
+      ],
+      "helpers/object-helper": [
+        "./dist/helpers/object-helper.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
@@ -37,10 +88,10 @@
     "decorators",
     "metadata"
   ],
-  "author": "Zero One IT <projects@expressive-tea.io>",
+  "author": "Expressive Tea <projects@expressive-tea.io>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@expressive-tea/metadata": "^2026.1.0",
+    "@expressive-tea/metadata": "~2026.1.1",
     "reflect-metadata": "^0.2.0"
   },
   "peerDependencies": {

@@ -6,6 +6,7 @@ packages/*/dist/
 dist/
 
 # Yarn
+.yarnrc.yml
 .yarn/*
 !.yarn/patches
 !.yarn/plugins

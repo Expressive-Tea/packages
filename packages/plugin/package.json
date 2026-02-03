@@ -1,9 +1,68 @@
 {
   "name": "@expressive-tea/plugin",
-  "version": "2026.1.0",
+  "version": "2026.1.1",
   "description": "Plugin architecture system for Expressive Tea framework",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./constants": {
+      "types": "./dist/constants.d.ts",
+      "require": "./dist/constants.js",
+      "default": "./dist/constants.js"
+    },
+    "./interfaces": {
+      "types": "./dist/interfaces.d.ts",
+      "require": "./dist/interfaces.js",
+      "default": "./dist/interfaces.js"
+    },
+    "./classes": {
+      "types": "./dist/classes/index.d.ts",
+      "require": "./dist/classes/index.js",
+      "default": "./dist/classes/index.js"
+    },
+    "./decorators": {
+      "types": "./dist/decorators/index.d.ts",
+      "require": "./dist/decorators/index.js",
+      "default": "./dist/decorators/index.js"
+    },
+    "./exceptions": {
+      "types": "./dist/exceptions/index.d.ts",
+      "require": "./dist/exceptions/index.js",
+      "default": "./dist/exceptions/index.js"
+    },
+    "./helpers": {
+      "types": "./dist/helpers/index.d.ts",
+      "require": "./dist/helpers/index.js",
+      "default": "./dist/helpers/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "constants": [
+        "./dist/constants.d.ts"
+      ],
+      "interfaces": [
+        "./dist/interfaces.d.ts"
+      ],
+      "classes": [
+        "./dist/classes/index.d.ts"
+      ],
+      "decorators": [
+        "./dist/decorators/index.d.ts"
+      ],
+      "exceptions": [
+        "./dist/exceptions/index.d.ts"
+      ],
+      "helpers": [
+        "./dist/helpers/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
@@ -40,7 +99,8 @@
   "author": "Zero One IT <projects@expressive-tea.io>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@expressive-tea/metadata": "~2026.1.0",
+    "@expressive-tea/commons": "~2026.1.1",
+    "@expressive-tea/metadata": "~2026.1.1",
     "reflect-metadata": "~0.2.0"
   },
   "peerDependencies": {
